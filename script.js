@@ -1,5 +1,75 @@
+// Language toggle functionality
+let currentLanguage = 'en';
+
+function switchLanguage(lang) {
+    currentLanguage = lang;
+    
+    // Update all elements with data-en and data-zh attributes
+    const elements = document.querySelectorAll('[data-en][data-zh]');
+    elements.forEach(element => {
+        const text = element.getAttribute(`data-${lang}`);
+        if (text) {
+            element.textContent = text;
+        }
+    });
+    
+    // Update placeholders for form inputs
+    const placeholderElements = document.querySelectorAll('[data-placeholder-en][data-placeholder-zh]');
+    placeholderElements.forEach(element => {
+        const placeholder = element.getAttribute(`data-placeholder-${lang}`);
+        if (placeholder) {
+            element.placeholder = placeholder;
+        }
+    });
+    
+    // Update select options
+    const selectOptions = document.querySelectorAll('select option[data-en][data-zh]');
+    selectOptions.forEach(option => {
+        const text = option.getAttribute(`data-${lang}`);
+        if (text) {
+            option.textContent = text;
+        }
+    });
+    
+    // Update the language toggle active state
+    const langEnOption = document.getElementById('lang-en');
+    const langZhOption = document.getElementById('lang-zh');
+    if (langEnOption && langZhOption) {
+        if (lang === 'en') {
+            langEnOption.classList.add('active');
+            langZhOption.classList.remove('active');
+        } else {
+            langEnOption.classList.remove('active');
+            langZhOption.classList.add('active');
+        }
+    }
+    
+    // Update the HTML lang attribute
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+}
+
 // RSVP Modal functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Language toggle event listeners
+    const langEnOption = document.getElementById('lang-en');
+    const langZhOption = document.getElementById('lang-zh');
+    
+    if (langEnOption) {
+        langEnOption.addEventListener('click', function() {
+            if (currentLanguage !== 'en') {
+                switchLanguage('en');
+            }
+        });
+    }
+    
+    if (langZhOption) {
+        langZhOption.addEventListener('click', function() {
+            if (currentLanguage !== 'zh') {
+                switchLanguage('zh');
+            }
+        });
+    }
+
     const rsvpLinks = document.querySelectorAll('a[href="#rsvp"]');
     const rsvpModal = document.getElementById('rsvp-modal');
     const closeModal = document.querySelector('.close-modal');
@@ -34,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Get form data
         const formData = new FormData(rsvpForm);
-        const firstName = rsvpForm.querySelector('input[placeholder="First Name"]').value;
-        const lastName = rsvpForm.querySelector('input[placeholder="Last Name"]').value;
+        const firstName = rsvpForm.querySelector('input[data-placeholder-en="First Name"]').value;
+        const lastName = rsvpForm.querySelector('input[data-placeholder-en="Last Name"]').value;
         const email = rsvpForm.querySelector('input[type="email"]').value;
         const attendance = rsvpForm.querySelector('select').value;
         const guests = rsvpForm.querySelector('input[type="number"]').value;
@@ -43,12 +113,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Simple validation
         if (!firstName || !lastName || !email || !attendance) {
-            alert('Please fill in all required fields.');
+            const errorMessage = currentLanguage === 'en' 
+                ? 'Please fill in all required fields.' 
+                : '请填写所有必填字段。';
+            alert(errorMessage);
             return;
         }
 
         // Show success message
-        alert('Thank you for your RSVP! We look forward to celebrating with you.');
+        const successMessage = currentLanguage === 'en' 
+            ? 'Thank you for your RSVP! We look forward to celebrating with you.' 
+            : '感谢您的回复！我们期待与您一起庆祝。';
+        alert(successMessage);
         
         // Reset form and close modal
         rsvpForm.reset();
