@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keisha & Robin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-logo">Keisha & Robin</div>
+            <div class="nav-links">
+                <a href="#rsvp" class="rsvp-link">RSVP</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Keisha & Robin</h1>
+                <div class="hero-subtitle">
+                    <p>Please join Keisha and Robin on January 18, 2026</p>
+                    <p>as we celebrate our wedding in Singapore.</p>
+                </div>
+                <div class="hero-details">
+                    <p><strong>COCKTAIL ATTIRE</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="container">
+                <div class="story-grid">
+                    <div class="story-item">
+                        <h3>Keisha's Story</h3>
+                        <p>Keisha grew up in Singapore, spending much of her childhood exploring the vibrant neighborhoods and diverse culture of the city. She studied business and worked in marketing before pursuing her passion for creative direction. Today, she works as a brand strategist, helping companies tell their stories through compelling visuals and messaging.</p>
+                    </div>
+                    <div class="story-item">
+                        <h3>Robin's Story</h3>
+                        <p>Robin was born in Canada and spent much of his life in Vancouver, moving to Singapore at the age of 25 to pursue new opportunities. His work in technology and innovation has taken him across Asia, and he's passionate about building products that connect people and communities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relationship-section">
+            <div class="container">
+                <h2 class="section-title">Keisha & Robin</h2>
+                <div class="relationship-content">
+                    <h3>Our Relationship</h3>
+                    <p>We met in 2019, at a mutual friend's party in Singapore. We hit it off immediately, bonding over our love of good food and travel. We had a magical time together during our first year of dating, exploring the city and beyond, and we both knew it was special. We were engaged in March 2024, and now we're getting married!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="schedule-section">
+            <div class="container">
+                <h2 class="section-title">Keisha & Robin</h2>
+                <div class="event-date">January 18, 2026 · Singapore</div>
+                <div class="schedule-grid">
+                    <div class="schedule-day">
+                        <h3>Wedding Day</h3>
+                        <div class="schedule-subtitle">January 18</div>
+                        
+                        <div class="schedule-event">
+                            <h4>Ceremony</h4>
+                            <div class="event-time">16:00</div>
+                            <div class="event-location">
+                                <p>Claudine Restaurant</p>
+                                <p>1 Cluny Road</p>
+                                <p>Singapore 259569</p>
+                                <p>+65 6479 4059</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-event">
+                            <h4>Reception</h4>
+                            <div class="event-time">18:00</div>
+                            <div class="event-location">
+                                <p>Claudine Restaurant</p>
+                                <p>1 Cluny Road</p>
+                                <p>Singapore 259569</p>
+                                <p>+65 6479 4059</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-section">
+            <div class="container">
+                <h2 class="final-title">Keisha & Robin</h2>
+                <div class="final-content">
+                    <a href="#rsvp" class="rsvp-button">RSVP</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="rsvp-modal" class="rsvp-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>RSVP</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please respond by December 15, 2025</p>
+                <form class="rsvp-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Will you attend?</option>
+                            <option value="yes">Yes, I'll be there</option>
+                            <option value="no">Sorry, can't make it</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" placeholder="Number of guests" min="1" max="2">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Dietary restrictions or special requests" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit RSVP</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
