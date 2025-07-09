@@ -575,17 +575,6 @@ p {
     margin-top: 4px;
 }
 
-.schedule-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 24px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 .schedule-event {
     margin-bottom: 40px;
     text-align: center;
