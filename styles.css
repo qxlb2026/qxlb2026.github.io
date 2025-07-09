@@ -325,8 +325,7 @@ p {
 
 /* Hero Section */
 .hero-section {
-    min-height: 100vh;
-    min-height: 100dvh; /* Use dynamic viewport height for better mobile support */
+    height: 100vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -406,8 +405,7 @@ p {
 /* Additional mobile optimizations for hero section */
 @media (max-width: 480px) {
     .hero-section {
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: 100vh;
         padding: 120px 0 20px;
         background-size: cover;
         background-position: center center;
@@ -438,17 +436,35 @@ p {
 @media screen and (max-width: 768px) {
     /* Prevent address bar hide/show from causing jumps */
     .hero-section {
-        /* Use a fixed height on small screens to prevent jumps */
+        /* Use a completely fixed height to prevent background resizing */
         height: 100vh;
-        height: 100dvh;
-        min-height: 100vh;
-        min-height: 100dvh;
         background-attachment: scroll;
         background-size: cover;
         background-position: center center;
+        background-repeat: no-repeat;
         overflow: hidden;
         padding: 140px 0 40px;
         align-items: flex-start;
+        /* Lock the background to prevent any resizing */
+        position: relative;
+        /* Prevent any dynamic height changes */
+        flex-shrink: 0;
+    }
+    
+    /* Additional stability for the hero background */
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('NZ_Keisha-Robin_Centred.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        z-index: -1;
     }
     
     /* Ensure smooth scrolling without jumps */
@@ -973,7 +989,8 @@ p {
 
 @media (max-width: 768px) {
     .photo-section {
-        min-height: 50vh;
+        height: 60vh;
+        min-height: 400px;
     }
 }
 
@@ -1057,7 +1074,6 @@ p {
     .hero-section {
         padding: 140px 0 40px;
         height: 100vh;
-        height: 100dvh;
         align-items: flex-start;
     }
     
