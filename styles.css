@@ -8,6 +8,9 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Prevent viewport jumping on mobile */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -17,6 +20,9 @@ body {
     background: #fff;
     font-weight: 400;
     overflow-x: hidden;
+    /* Prevent mobile viewport jumps */
+    position: relative;
+    min-height: 100vh;
 }
 
 /* Container */
@@ -215,7 +221,10 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll; /* Prevent parallax issues on mobile */
     position: relative;
+    /* Prevent layout shifts */
+    overflow: hidden;
 }
 
 .hero-title {
@@ -260,9 +269,7 @@ body {
     .hero-section {
         min-height: 100vh;
         min-height: 100dvh;
-        height: 100vh;
-        height: 100dvh;
-        padding: 120px 0 40px;
+        padding: 120px 0 20px;
         background-size: cover;
         background-position: center center;
     }
@@ -285,6 +292,21 @@ body {
     
     .hero-location {
         margin-bottom: 32px;
+    }
+}
+
+/* Prevent mobile viewport jumping */
+@media screen and (max-width: 768px) {
+    /* Prevent address bar hide/show from causing jumps */
+    .hero-section {
+        /* Use a fixed height on small screens to prevent jumps */
+        height: calc(100vh - env(keyboard-inset-height, 0px));
+        min-height: auto;
+    }
+    
+    /* Ensure smooth scrolling without jumps */
+    html {
+        scroll-padding-top: 0;
     }
 }
 
