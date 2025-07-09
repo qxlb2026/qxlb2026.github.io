@@ -373,7 +373,7 @@ p {
     line-height: 1.5;
     font-weight: 400;
     letter-spacing: 1px;
-    animation: fadeInUp 1.2s ease-out 0.4s forwards;
+    animation: fadeInUp 1.2s ease-out 0.2s forwards;
     opacity: 0;
     transform: translateY(30px);
     will-change: opacity, transform;
@@ -388,7 +388,7 @@ p {
     line-height: 2;
     font-weight: 300;
     letter-spacing: 0.5px;
-    animation: fadeInUp 1.2s ease-out 0.6s forwards;
+    animation: fadeInUp 1.2s ease-out 0.2s forwards;
     opacity: 0;
     transform: translateY(30px);
     will-change: opacity, transform;
@@ -445,26 +445,8 @@ p {
         overflow: hidden;
         padding: 140px 0 40px;
         align-items: flex-start;
-        /* Lock the background to prevent any resizing */
         position: relative;
-        /* Prevent any dynamic height changes */
         flex-shrink: 0;
-    }
-    
-    /* Additional stability for the hero background */
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url('NZ_Keisha-Robin_Centred.jpg');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        z-index: -1;
     }
     
     /* Ensure smooth scrolling without jumps */
@@ -1152,21 +1134,6 @@ p {
         margin-bottom: 60px;
     }
     
-    .modal-content {
-        margin: 20px auto;
-        width: 95%;
-        max-height: calc(100vh - 40px);
-    }
-    
-    .modal-header {
-        padding: 24px 24px 0;
-        margin-bottom: 24px;
-    }
-    
-    .modal-body {
-        padding: 0 24px 24px;
-    }
-    
     .container {
         padding: 0 16px;
     }
@@ -1193,48 +1160,6 @@ p {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
     }
 }
 

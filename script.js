@@ -10,6 +10,9 @@ window.addEventListener('load', () => {
 // Language toggle functionality
 let currentLanguage = 'en';
 
+// Cache DOM elements
+let langEnOption, langZhOption, navElement;
+
 function switchLanguage(lang) {
     currentLanguage = lang;
     
@@ -32,9 +35,6 @@ function switchLanguage(lang) {
     });
     
     // Update the language toggle active state and ARIA attributes
-    const langEnOption = document.getElementById('lang-en');
-    const langZhOption = document.getElementById('lang-zh');
-    
     if (langEnOption && langZhOption) {
         if (lang === 'en') {
             langEnOption.classList.add('active');
@@ -55,10 +55,12 @@ function switchLanguage(lang) {
 
 // Main initialization when DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Language toggle event listeners
-    const langEnOption = document.getElementById('lang-en');
-    const langZhOption = document.getElementById('lang-zh');
+    // Cache DOM elements
+    langEnOption = document.getElementById('lang-en');
+    langZhOption = document.getElementById('lang-zh');
+    navElement = document.querySelector('.nav');
     
+    // Language toggle event listeners
     if (langEnOption) {
         langEnOption.addEventListener('click', function() {
             if (currentLanguage !== 'en') {
@@ -93,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = href.substring(1);
             const target = document.getElementById(targetId);
             
-            if (target) {
-                const navHeight = document.querySelector('.nav').offsetHeight;
+            if (target && navElement) {
+                const navHeight = navElement.offsetHeight;
                 const targetPosition = target.offsetTop - navHeight - 20;
                 
                 window.scrollTo({
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
-        const navHeight = document.querySelector('.nav').offsetHeight;
+        const navHeight = navElement ? navElement.offsetHeight : 80;
         
         let currentSection = '';
         
