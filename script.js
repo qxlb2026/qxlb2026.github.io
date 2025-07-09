@@ -75,13 +75,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const rsvpModal = document.getElementById('rsvp-modal');
     const closeModal = document.querySelector('.close-modal');
     const rsvpForm = document.querySelector('.rsvp-form');
+    let lastFocusedElement = null;
 
     // Open modal when RSVP links are clicked
     rsvpLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            lastFocusedElement = document.activeElement;
             rsvpModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            
+            // Focus the first form input for accessibility
+            const firstInput = rsvpModal.querySelector('input, select, textarea');
+            if (firstInput) {
+                setTimeout(() => firstInput.focus(), 100);
+            }
         });
     });
 
@@ -89,6 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
     closeModal.addEventListener('click', function() {
         rsvpModal.style.display = 'none';
         document.body.style.overflow = 'auto';
+        
+        // Return focus to the element that opened the modal
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
     });
 
     // Close modal when clicking outside the modal content
@@ -96,6 +109,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target === rsvpModal) {
             rsvpModal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            
+            // Return focus to the element that opened the modal
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
         }
     });
 
