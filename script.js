@@ -71,93 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const rsvpLinks = document.querySelectorAll('a[href="#rsvp"]');
-    const rsvpModal = document.getElementById('rsvp-modal');
-    const closeModal = document.querySelector('.close-modal');
-    const rsvpForm = document.querySelector('.rsvp-form');
-    let lastFocusedElement = null;
-
-    // Open modal when RSVP links are clicked
-    rsvpLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            lastFocusedElement = document.activeElement;
-            rsvpModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            
-            // Focus the first form input for accessibility
-            const firstInput = rsvpModal.querySelector('input, select, textarea');
-            if (firstInput) {
-                setTimeout(() => firstInput.focus(), 100);
-            }
-        });
-    });
-
-    // Close modal when close button is clicked
-    closeModal.addEventListener('click', function() {
-        rsvpModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        
-        // Return focus to the element that opened the modal
-        if (lastFocusedElement) {
-            lastFocusedElement.focus();
-        }
-    });
-
-    // Close modal when clicking outside the modal content
-    rsvpModal.addEventListener('click', function(e) {
-        if (e.target === rsvpModal) {
-            rsvpModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            
-            // Return focus to the element that opened the modal
-            if (lastFocusedElement) {
-                lastFocusedElement.focus();
-            }
-        }
-    });
-
-    // Handle form submission
-    rsvpForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(rsvpForm);
-        const firstName = rsvpForm.querySelector('input[data-placeholder-en="First Name"]').value;
-        const lastName = rsvpForm.querySelector('input[data-placeholder-en="Last Name"]').value;
-        const email = rsvpForm.querySelector('input[type="email"]').value;
-        const attendance = rsvpForm.querySelector('select').value;
-        const guests = rsvpForm.querySelector('input[type="number"]').value;
-        const dietary = rsvpForm.querySelector('textarea').value;
-
-        // Simple validation
-        if (!firstName || !lastName || !email || !attendance) {
-            const errorMessage = currentLanguage === 'en' 
-                ? 'Please fill in all required fields.' 
-                : '请填写所有必填字段。';
-            alert(errorMessage);
-            return;
-        }
-
-        // Show success message
-        const successMessage = currentLanguage === 'en' 
-            ? 'Thank you for your RSVP! We look forward to celebrating with you.' 
-            : '感谢您的回复！我们期待与您一起庆祝。';
-        alert(successMessage);
-        
-        // Reset form and close modal
-        rsvpForm.reset();
-        rsvpModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href') === '#rsvp') {
-                return; // Let the modal handler take care of this
-            }
-            
             e.preventDefault();
             const href = this.getAttribute('href');
             
@@ -213,14 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update active nav link on scroll
     window.addEventListener('scroll', updateActiveNavLink);
     updateActiveNavLink(); // Call once on load
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && rsvpModal.style.display === 'block') {
-            rsvpModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
 
     // Mobile navigation toggle
     const navToggle = document.querySelector('.nav-toggle');
