@@ -210,7 +210,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     text-align: center;
-    padding: 200px 0 80px;
+    padding: 200px 0 40px;
     background-image: url('NZ_Keisha-Robin_Centred.jpg');
     background-size: cover;
     background-position: center;
@@ -348,7 +348,7 @@ body {
 
 /* Schedule Section */
 .schedule-section {
-    padding: 120px 0;
+    padding: 60px 0;
     background: #fff;
     position: relative;
 }
@@ -899,7 +899,7 @@ body {
     }
     
     .hero-section {
-        padding: 140px 0 60px;
+        padding: 140px 0 20px;
         min-height: 100vh;
         min-height: 100dvh; /* Use dynamic viewport height for better mobile support */
     }
@@ -919,6 +919,10 @@ body {
     .schedule-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+    
+    .schedule-section {
+        padding: 40px 0;
     }
     
     .schedule-event {
@@ -982,5 +986,28 @@ body {
     
     .container {
         padding: 0 16px;
+    }
+}
+
+/* Additional mobile optimizations for small screens */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 120px 0 20px;
+    }
+    
+    .schedule-section {
+        padding: 30px 0;
+    }
+    
+    .hero-title {
+        margin-bottom: 16px;
+    }
+    
+    .hero-date {
+        margin-bottom: 12px;
+    }
+    
+    .hero-location {
+        margin-bottom: 32px;
     }
 }
