@@ -1,10 +1,19 @@
+// Prevent transition flash on page load by adding preload class
+// This class is removed after the page loads to enable smooth transitions
+document.body.classList.add('preload');
+
+// Remove preload class after page loads to enable animations
+window.addEventListener('load', () => {
+    document.body.classList.remove('preload');
+});
+
 // Language toggle functionality
 let currentLanguage = 'en';
 
 function switchLanguage(lang) {
     currentLanguage = lang;
     
-    // Update all elements with data-en and data-zh attributes
+    // Update all elements with bilingual data attributes
     const elements = document.querySelectorAll('[data-en][data-zh]');
     elements.forEach(element => {
         const text = element.getAttribute(`data-${lang}`);
@@ -13,7 +22,7 @@ function switchLanguage(lang) {
         }
     });
     
-    // Update placeholders for form inputs
+    // Update placeholders for form inputs (if any are added later)
     const placeholderElements = document.querySelectorAll('[data-placeholder-en][data-placeholder-zh]');
     placeholderElements.forEach(element => {
         const placeholder = element.getAttribute(`data-placeholder-${lang}`);
@@ -22,26 +31,21 @@ function switchLanguage(lang) {
         }
     });
     
-    // Update select options
-    const selectOptions = document.querySelectorAll('select option[data-en][data-zh]');
-    selectOptions.forEach(option => {
-        const text = option.getAttribute(`data-${lang}`);
-        if (text) {
-            option.textContent = text;
-        }
-    });
-    
-    // Update the language toggle active state
+    // Update the language toggle active state and ARIA attributes
     const langEnOption = document.getElementById('lang-en');
     const langZhOption = document.getElementById('lang-zh');
     
     if (langEnOption && langZhOption) {
         if (lang === 'en') {
             langEnOption.classList.add('active');
+            langEnOption.setAttribute('aria-pressed', 'true');
             langZhOption.classList.remove('active');
+            langZhOption.setAttribute('aria-pressed', 'false');
         } else {
             langEnOption.classList.remove('active');
+            langEnOption.setAttribute('aria-pressed', 'false');
             langZhOption.classList.add('active');
+            langZhOption.setAttribute('aria-pressed', 'true');
         }
     }
     
@@ -49,7 +53,7 @@ function switchLanguage(lang) {
     document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
 }
 
-// RSVP Modal functionality
+// Main initialization when DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Language toggle event listeners
     const langEnOption = document.getElementById('lang-en');
@@ -188,4 +192,163 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-label', 'Toggle navigation menu');
     }
+
+    // Initialize scroll animations for fade-in effects
+    initScrollAnimations();
 });
+
+// Scroll-triggered animations for fade-in effects on key elements
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.15, // Trigger when 15% of element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                observer.unobserve(entry.target); // Stop observing after animation
+            }
+        });
+    }, observerOptions);
+
+    // Elements that should animate on scroll
+    const elementsToAnimate = [
+        '.schedule-event',
+        '.faq-item',
+        '.travel-item',
+        '.things-category',
+        '.activity-item'
+    ];
+
+    // Add animation classes and observe each element
+    elementsToAnimate.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            element.classList.add('animate-on-scroll');
+            observer.observe(element);
+        });
+    });
+}
+
+// Save to Calendar functionality - generates .ics files for events
+function addToCalendar(eventId) {
+    // Event data with bilingual support
+    const events = {
+        'friday-activity-1': {
+            title: currentLanguage === 'en' ? 'Friday Activity 1 - Keisha & Robin Wedding' : '星期五活动一 - 琦霞乐彬婚礼',
+            date: '2026-01-16',
+            startTime: '10:00',
+            endTime: '12:00',
+            location: 'TBD',
+            description: currentLanguage === 'en' ? 'Welcome activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末欢迎活动。详情待公布。'
+        },
+        'friday-activity-2': {
+            title: currentLanguage === 'en' ? 'Friday Activity 2 - Keisha & Robin Wedding' : '星期五活动二 - 琦霞乐彬婚礼',
+            date: '2026-01-16',
+            startTime: '14:00',
+            endTime: '16:00',
+            location: 'TBD',
+            description: currentLanguage === 'en' ? 'Welcome activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末欢迎活动。详情待公布。'
+        },
+        'saturday-activity-1': {
+            title: currentLanguage === 'en' ? 'Saturday Activity 1 - Keisha & Robin Wedding' : '星期六活动一 - 琦霞乐彬婚礼',
+            date: '2026-01-17',
+            startTime: '10:00',
+            endTime: '12:00',
+            location: 'TBD',
+            description: currentLanguage === 'en' ? 'Pre-wedding activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末婚前活动。详情待公布。'
+        },
+        'saturday-activity-2': {
+            title: currentLanguage === 'en' ? 'Saturday Activity 2 - Keisha & Robin Wedding' : '星期六活动二 - 琦霞乐彬婚礼',
+            date: '2026-01-17',
+            startTime: '14:00',
+            endTime: '16:00',
+            location: 'TBD',
+            description: currentLanguage === 'en' ? 'Pre-wedding activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末婚前活动。详情待公布。'
+        },
+        'wedding-ceremony': {
+            title: currentLanguage === 'en' ? 'Keisha & Robin Wedding Ceremony' : '琦霞乐彬婚礼仪式',
+            date: '2026-01-18',
+            startTime: '18:00',
+            endTime: '19:00',
+            location: 'Claudine Restaurant, 39C Harding Road, Singapore 249541',
+            description: currentLanguage === 'en' ? 'Wedding ceremony of Keisha & Robin at Claudine Restaurant.' : '琦霞乐彬在Claudine餐厅举行的婚礼仪式。'
+        },
+        'wedding-reception': {
+            title: currentLanguage === 'en' ? 'Keisha & Robin Wedding Reception & Dinner' : '琦霞乐彬婚礼招待会与晚宴',
+            date: '2026-01-18',
+            startTime: '19:30',
+            endTime: '23:00',
+            location: 'Claudine Restaurant, 39C Harding Road, Singapore 249541',
+            description: currentLanguage === 'en' ? 'Wedding reception and dinner for Keisha & Robin at Claudine Restaurant.' : '琦霞乐彬在Claudine餐厅举行的婚礼招待会与晚宴。'
+        }
+    };
+
+    const event = events[eventId];
+    if (!event) return;
+
+    // Generate ICS content and trigger download
+    const icsContent = generateICS(event);
+    downloadICS(icsContent, `${eventId}-keisha-robin-wedding.ics`);
+}
+
+// Generate ICS (iCalendar) format content for calendar applications
+function generateICS(event) {
+    const startDateTime = formatDateTimeForICS(event.date, event.startTime);
+    const endDateTime = formatDateTimeForICS(event.date, event.endTime);
+    const currentDateTime = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    
+    // Generate a unique ID for this event
+    const uid = `${event.date.replace(/-/g, '')}-${event.startTime.replace(':', '')}-keisha-robin-wedding@qxlb2026.github.io`;
+    
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Keisha & Robin Wedding//Wedding Invitation//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `UID:${uid}`,
+        `DTSTAMP:${currentDateTime}`,
+        `DTSTART:${startDateTime}`,
+        `DTEND:${endDateTime}`,
+        `SUMMARY:${event.title}`,
+        `DESCRIPTION:${event.description}`,
+        `LOCATION:${event.location}`,
+        'STATUS:CONFIRMED',
+        'SEQUENCE:0',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+    
+    return icsContent;
+}
+
+// Format date and time for ICS format (YYYYMMDDTHHMMSS)
+function formatDateTimeForICS(date, time) {
+    // Convert date format from YYYY-MM-DD to YYYYMMDD
+    const dateStr = date.replace(/-/g, '');
+    // Convert time format from HH:MM to HHMMSS (Singapore timezone)
+    const timeStr = time.replace(':', '') + '00';
+    
+    return `${dateStr}T${timeStr}`;
+}
+
+// Create and trigger download of ICS file
+function downloadICS(content, filename) {
+    const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    
+    if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', filename);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+}

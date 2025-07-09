@@ -20,44 +20,51 @@
     <meta property="twitter:image" content="./NZ_Keisha-Robin_Centred.jpg">
     <title>Keisha & Robin - 18 January 2026</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='25' fill='%23cd071e'/><line x1='50' y1='10' x2='50' y2='20' stroke='%23cd071e' stroke-width='5'/><line x1='50' y1='80' x2='50' y2='90' stroke='%23cd071e' stroke-width='5'/><line x1='10' y1='50' x2='20' y2='50' stroke='%23cd071e' stroke-width='5'/><line x1='80' y1='50' x2='90' y2='50' stroke='%23cd071e' stroke-width='5'/><line x1='21.7' y1='21.7' x2='28.8' y2='28.8' stroke='%23cd071e' stroke-width='5'/><line x1='71.2' y1='71.2' x2='78.3' y2='78.3' stroke='%23cd071e' stroke-width='5'/><line x1='21.7' y1='78.3' x2='28.8' y2='71.2' stroke='%23cd071e' stroke-width='5'/><line x1='71.2' y1='28.8' x2='78.3' y2='21.7' stroke='%23cd071e' stroke-width='5'/></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Load Inter font with display=block to prevent FOUT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <div class="nav-links">
                 <div class="nav-left">
-                    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
                     </button>
-                    <div class="nav-menu">
-                        <a href="#schedule" data-en="Schedule" data-zh="日程">Schedule</a>
-                        <a href="#location" data-en="Location" data-zh="地点">Location</a>
-                        <a href="#travel" data-en="Travel" data-zh="旅行">Travel</a>
-                        <a href="#activities" data-en="Activities" data-zh="活动">Activities</a>
-                        <a href="#faq" data-en="FAQ" data-zh="常见问题">FAQ</a>
+                    <div class="nav-menu" id="nav-menu" role="menu">
+                        <a href="#schedule" role="menuitem" data-en="Schedule" data-zh="日程">Schedule</a>
+                        <a href="#location" role="menuitem" data-en="Location" data-zh="地点">Location</a>
+                        <a href="#travel" role="menuitem" data-en="Travel" data-zh="旅行">Travel</a>
+                        <a href="#activities" role="menuitem" data-en="Activities" data-zh="活动">Activities</a>
+                        <a href="#faq" role="menuitem" data-en="FAQ" data-zh="常见问题">FAQ</a>
                     </div>
                 </div>
                 <div class="nav-right">
-                    <div class="language-toggle">
-                        <span id="lang-en" class="lang-option active">English</span>
-                        <span class="lang-separator"> / </span>
-                        <span id="lang-zh" class="lang-option">中文</span>
+                    <div class="language-toggle" role="group" aria-label="Language selection">
+                        <button id="lang-en" class="lang-option active" aria-pressed="true" aria-label="Switch to English">English</button>
+                        <span class="lang-separator" aria-hidden="true"> / </span>
+                        <button id="lang-zh" class="lang-option" aria-pressed="false" aria-label="Switch to Chinese">中文</button>
                     </div>
-                    <a href="https://zsgxirujwnux.sg.larksuite.com/share/base/form/shrlgAG9TzjlZQ9pAhMGhpqXoRf" target="_blank" class="rsvp-link" data-en="RSVP" data-zh="回复">RSVP</a>
+                    <a href="https://zsgxirujwnux.sg.larksuite.com/share/base/form/shrlgAG9TzjlZQ9pAhMGhpqXoRf" target="_blank" rel="noopener noreferrer" class="rsvp-link" data-en="RSVP" data-zh="回复">RSVP</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="main-content">
-        <section class="hero-section">
+    <main class="main-content" role="main">
+        <section class="hero-section" aria-label="Wedding announcement">
             <div class="container">
                 <h1 class="hero-title" data-en="Keisha & Robin" data-zh="琦霞 & 乐彬">Keisha & Robin</h1>
-                <div class="hero-date" data-en="18 January 2026" data-zh="2026年1月18日">18 January 2026</div>
+                <time class="hero-date" datetime="2026-01-18" data-en="18 January 2026" data-zh="2026年1月18日">18 January 2026</time>
                 <div class="hero-location" data-en="Claudine • Singapore" data-zh="Claudine • 新加坡">Claudine • Singapore</div>
             </div>
         </section>
@@ -69,81 +76,87 @@
                     <div class="schedule-day">
                         <div class="day-header">
                             <h3 class="day-name" data-en="Friday" data-zh="星期五">Friday</h3>
-                            <div class="day-date" data-en="16 January" data-zh="1月16日">16 January</div>
+                            <time class="day-date" datetime="2026-01-16" data-en="16 January" data-zh="1月16日">16 January</time>
                         </div>
                         <div class="schedule-subtitle" data-en="Welcome Activities" data-zh="欢迎活动">Welcome Activities</div>
                         
-                        <div class="schedule-event">
+                        <article class="schedule-event">
                             <h4 data-en="Activity 1" data-zh="活动一">Activity 1</h4>
                             <div class="event-time">TBD</div>
                             <div class="event-location">
                                 <p data-en="Location TBD" data-zh="地点待定">Location TBD</p>
                                 <p data-en="Details to be announced" data-zh="详情待公布">Details to be announced</p>
                             </div>
-                        </div>
+                            <button type="button" class="save-date-link" onclick="addToCalendar('friday-activity-1')" data-en="Save to Calendar" data-zh="保存到日历">Save to Calendar</button>
+                        </article>
 
-                        <div class="schedule-event">
+                        <article class="schedule-event">
                             <h4 data-en="Activity 2" data-zh="活动二">Activity 2</h4>
                             <div class="event-time">TBD</div>
                             <div class="event-location">
                                 <p data-en="Location TBD" data-zh="地点待定">Location TBD</p>
                                 <p data-en="Details to be announced" data-zh="详情待公布">Details to be announced</p>
                             </div>
-                        </div>
+                            <button type="button" class="save-date-link" onclick="addToCalendar('friday-activity-2')" data-en="Save to Calendar" data-zh="保存到日历">Save to Calendar</button>
+                        </article>
                     </div>
 
                     <div class="schedule-day">
                         <div class="day-header">
                             <h3 class="day-name" data-en="Saturday" data-zh="星期六">Saturday</h3>
-                            <div class="day-date" data-en="17 January" data-zh="1月17日">17 January</div>
+                            <time class="day-date" datetime="2026-01-17" data-en="17 January" data-zh="1月17日">17 January</time>
                         </div>
                         <div class="schedule-subtitle" data-en="Pre-Wedding Events" data-zh="婚前活动">Pre-Wedding Events</div>
                         
-                        <div class="schedule-event">
+                        <article class="schedule-event">
                             <h4 data-en="Activity 1" data-zh="活动一">Activity 1</h4>
                             <div class="event-time">TBD</div>
                             <div class="event-location">
                                 <p data-en="Location TBD" data-zh="地点待定">Location TBD</p>
                                 <p data-en="Details to be announced" data-zh="详情待公布">Details to be announced</p>
                             </div>
-                        </div>
+                            <button type="button" class="save-date-link" onclick="addToCalendar('saturday-activity-1')" data-en="Save to Calendar" data-zh="保存到日历">Save to Calendar</button>
+                        </article>
 
-                        <div class="schedule-event">
+                        <article class="schedule-event">
                             <h4 data-en="Activity 2" data-zh="活动二">Activity 2</h4>
                             <div class="event-time">TBD</div>
                             <div class="event-location">
                                 <p data-en="Location TBD" data-zh="地点待定">Location TBD</p>
                                 <p data-en="Details to be announced" data-zh="详情待公布">Details to be announced</p>
                             </div>
-                        </div>
+                            <button type="button" class="save-date-link" onclick="addToCalendar('saturday-activity-2')" data-en="Save to Calendar" data-zh="保存到日历">Save to Calendar</button>
+                        </article>
                     </div>
 
                     <div class="schedule-day">
                         <div class="day-header">
                             <h3 class="day-name" data-en="Sunday" data-zh="星期日">Sunday</h3>
-                            <div class="day-date" data-en="18 January" data-zh="1月18日">18 January</div>
+                            <time class="day-date" datetime="2026-01-18" data-en="18 January" data-zh="1月18日">18 January</time>
                         </div>
                         <div class="schedule-subtitle" data-en="Wedding Day" data-zh="婚礼日">Wedding Day</div>
                         
-                        <div class="schedule-event">
+                        <article class="schedule-event">
                             <h4 data-en="Wedding Ceremony" data-zh="婚礼仪式">Wedding Ceremony</h4>
-                            <div class="event-time">18:00</div>
+                            <time class="event-time" datetime="18:00">18:00</time>
                             <div class="event-location">
                                 <p data-en="Claudine Restaurant" data-zh="Claudine餐厅">Claudine Restaurant</p>
                                 <p>39C Harding Road</p>
                                 <p>Singapore 249541</p>
                             </div>
-                        </div>
+                            <button type="button" class="save-date-link" onclick="addToCalendar('wedding-ceremony')" data-en="Save to Calendar" data-zh="保存到日历">Save to Calendar</button>
+                        </article>
 
-                        <div class="schedule-event">
+                        <article class="schedule-event">
                             <h4 data-en="Reception & Dinner" data-zh="招待会与晚宴">Reception & Dinner</h4>
-                            <div class="event-time">19:30</div>
+                            <time class="event-time" datetime="19:30">19:30</time>
                             <div class="event-location">
                                 <p data-en="Claudine Restaurant" data-zh="Claudine餐厅">Claudine Restaurant</p>
                                 <p>39C Harding Road</p>
                                 <p>Singapore 249541</p>
                             </div>
-                        </div>
+                            <button type="button" class="save-date-link" onclick="addToCalendar('wedding-reception')" data-en="Save to Calendar" data-zh="保存到日历">Save to Calendar</button>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -209,32 +222,68 @@
                 <div class="things-grid">
                     <div class="things-category">
                         <h3 data-en="Must-See Attractions" data-zh="必看景点">Must-See Attractions</h3>
-                        <ul>
-                            <li data-en="Gardens by the Bay - Iconic supertree structures and conservatories" data-zh="滨海湾花园 - 标志性超级树结构和温室">Gardens by the Bay - Iconic supertree structures and conservatories</li>
-                            <li data-en="Marina Bay Sands SkyPark - Stunning city views from the 57th floor" data-zh="滨海湾金沙空中花园 - 57楼俯瞰城市美景">Marina Bay Sands SkyPark - Stunning city views from the 57th floor</li>
-                            <li data-en="Singapore Botanic Gardens - UNESCO World Heritage site with beautiful orchids" data-zh="新加坡植物园 - 联合国教科文组织世界遗产，美丽兰花">Singapore Botanic Gardens - UNESCO World Heritage site with beautiful orchids</li>
-                            <li data-en="Chinatown & Little India - Cultural districts with authentic food and shopping" data-zh="牛车水和小印度 - 文化区域，正宗美食和购物">Chinatown & Little India - Cultural districts with authentic food and shopping</li>
-                        </ul>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <h4 data-en="Gardens by the Bay" data-zh="滨海湾花园">Gardens by the Bay</h4>
+                                <p data-en="Iconic supertree structures and conservatories" data-zh="标志性超级树结构和温室">Iconic supertree structures and conservatories</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Marina Bay Sands SkyPark" data-zh="滨海湾金沙空中花园">Marina Bay Sands SkyPark</h4>
+                                <p data-en="Stunning city views from the 57th floor" data-zh="57楼俯瞰城市美景">Stunning city views from the 57th floor</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Singapore Botanic Gardens" data-zh="新加坡植物园">Singapore Botanic Gardens</h4>
+                                <p data-en="UNESCO World Heritage site with beautiful orchids" data-zh="联合国教科文组织世界遗产，美丽兰花">UNESCO World Heritage site with beautiful orchids</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Chinatown & Little India" data-zh="牛车水和小印度">Chinatown & Little India</h4>
+                                <p data-en="Cultural districts with authentic food and shopping" data-zh="文化区域，正宗美食和购物">Cultural districts with authentic food and shopping</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="things-category">
                         <h3 data-en="Shopping" data-zh="购物">Shopping</h3>
-                        <ul>
-                            <li data-en="Orchard Road - Premier shopping street with luxury boutiques" data-zh="乌节路 - 顶级购物街，奢侈品精品店">Orchard Road - Premier shopping street with luxury boutiques</li>
-                            <li data-en="VivoCity - Large shopping mall near Sentosa Island" data-zh="怡丰城 - 圣淘沙岛附近大型购物中心">VivoCity - Large shopping mall near Sentosa Island</li>
-                            <li data-en="Haji Lane - Trendy street with unique local boutiques" data-zh="哈芝巷 - 时尚街道，独特本地精品店">Haji Lane - Trendy street with unique local boutiques</li>
-                        </ul>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <h4 data-en="Orchard Road" data-zh="乌节路">Orchard Road</h4>
+                                <p data-en="Premier shopping street with luxury boutiques" data-zh="顶级购物街，奢侈品精品店">Premier shopping street with luxury boutiques</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="VivoCity" data-zh="怡丰城">VivoCity</h4>
+                                <p data-en="Large shopping mall near Sentosa Island" data-zh="圣淘沙岛附近大型购物中心">Large shopping mall near Sentosa Island</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Haji Lane" data-zh="哈芝巷">Haji Lane</h4>
+                                <p data-en="Trendy street with unique local boutiques" data-zh="时尚街道，独特本地精品店">Trendy street with unique local boutiques</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="things-category">
                         <h3 data-en="Dining Recommendations" data-zh="餐厅推荐">Dining Recommendations</h3>
-                        <ul>
-                            <li data-en="Newton Food Centre - Famous hawker center with local favorites" data-zh="牛顿熟食中心 - 著名小贩中心，本地美食">Newton Food Centre - Famous hawker center with local favorites</li>
-                            <li data-en="Lau Pa Sat - Historic Victorian market with diverse food options" data-zh="老巴刹 - 历史悠久的维多利亚市场，食物选择多样">Lau Pa Sat - Historic Victorian market with diverse food options</li>
-                            <li data-en="Burnt Ends - Award-winning barbecue restaurant in Chinatown" data-zh="Burnt Ends - 牛车水获奖烧烤餐厅">Burnt Ends - Award-winning barbecue restaurant in Chinatown</li>
-                            <li data-en="Odette - Fine dining at the National Gallery Singapore" data-zh="Odette - 新加坡国家美术馆精致餐厅">Odette - Fine dining at the National Gallery Singapore</li>
-                            <li data-en="Try local dishes: Hainanese Chicken Rice, Laksa, Char Kway Teow" data-zh="尝试本地菜肴：海南鸡饭、叻沙、炒粿条">Try local dishes: Hainanese Chicken Rice, Laksa, Char Kway Teow</li>
-                        </ul>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <h4 data-en="Newton Food Centre" data-zh="牛顿熟食中心">Newton Food Centre</h4>
+                                <p data-en="Famous hawker center with local favorites" data-zh="著名小贩中心，本地美食">Famous hawker center with local favorites</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Lau Pa Sat" data-zh="老巴刹">Lau Pa Sat</h4>
+                                <p data-en="Historic Victorian market with diverse food options" data-zh="历史悠久的维多利亚市场，食物选择多样">Historic Victorian market with diverse food options</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Burnt Ends" data-zh="Burnt Ends">Burnt Ends</h4>
+                                <p data-en="Award-winning barbecue restaurant in Chinatown" data-zh="牛车水获奖烧烤餐厅">Award-winning barbecue restaurant in Chinatown</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Odette" data-zh="Odette">Odette</h4>
+                                <p data-en="Fine dining at the National Gallery Singapore" data-zh="新加坡国家美术馆精致餐厅">Fine dining at the National Gallery Singapore</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4 data-en="Local Specialties" data-zh="本地特色菜">Local Specialties</h4>
+                                <p data-en="Try Hainanese Chicken Rice, Laksa, Char Kway Teow" data-zh="尝试海南鸡饭、叻沙、炒粿条">Try Hainanese Chicken Rice, Laksa, Char Kway Teow</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -272,8 +321,8 @@
             </div>
         </section>
 
-        <section class="photo-section">
-            <img src="Cape-Naturaliste.jpg" alt="Cape Naturaliste" class="bottom-photo">
+        <section class="photo-section" aria-label="Wedding photo">
+            <img src="Cape-Naturaliste.jpg" alt="Keisha and Robin at Cape Naturaliste, Western Australia - a beautiful coastal landscape with dramatic cliffs and ocean views" class="bottom-photo">
         </section>
     </main>
 
