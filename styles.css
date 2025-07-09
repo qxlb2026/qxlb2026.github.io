@@ -267,6 +267,14 @@ body {
         background-position: center center;
     }
     
+    .travel-section,
+    .things-section,
+    .location-section,
+    .faq-section,
+    .schedule-section {
+        padding: 60px 0;
+    }
+    
     .hero-title {
         margin-bottom: 16px;
     }
@@ -921,10 +929,6 @@ body {
         gap: 40px;
     }
     
-    .schedule-section {
-        padding: 80px 0;
-    }
-    
     .schedule-event {
         padding: 16px;
         margin-bottom: 24px;
@@ -961,7 +965,8 @@ body {
     .travel-section,
     .things-section,
     .location-section,
-    .faq-section {
+    .faq-section,
+    .schedule-section {
         padding: 80px 0;
     }
     
@@ -986,28 +991,5 @@ body {
     
     .container {
         padding: 0 16px;
-    }
-}
-
-/* Additional mobile optimizations for small screens */
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 120px 0 20px;
-    }
-    
-    .schedule-section {
-        padding: 60px 0;
-    }
-    
-    .hero-title {
-        margin-bottom: 16px;
-    }
-    
-    .hero-date {
-        margin-bottom: 12px;
-    }
-    
-    .hero-location {
-        margin-bottom: 32px;
     }
 }
