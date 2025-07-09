@@ -205,6 +205,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
+    min-height: 100dvh; /* Use dynamic viewport height for better mobile support */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -252,6 +253,31 @@ body {
     font-weight: 500;
     letter-spacing: 2px;
     color: #000;
+}
+
+/* Additional mobile optimizations for hero section */
+@media (max-width: 480px) {
+    .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: 100vh;
+        height: 100dvh;
+        padding: 120px 0 40px;
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    .hero-title {
+        margin-bottom: 16px;
+    }
+    
+    .hero-date {
+        margin-bottom: 12px;
+    }
+    
+    .hero-location {
+        margin-bottom: 32px;
+    }
 }
 
 /* Story Section */
@@ -874,7 +900,8 @@ body {
     
     .hero-section {
         padding: 140px 0 60px;
-        min-height: 80vh;
+        min-height: 100vh;
+        min-height: 100dvh; /* Use dynamic viewport height for better mobile support */
     }
     
     .hero-title {
