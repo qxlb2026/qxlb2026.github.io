@@ -342,11 +342,10 @@ p {
 }
 
 .hero-section .container {
-    animation: fadeInUp 1.2s ease-out forwards;
+    animation: fadeIn 1.2s ease-out forwards;
     opacity: 0;
-    transform: translateY(30px);
     /* Ensure animation doesn't affect subsequent sections */
-    will-change: opacity, transform;
+    will-change: opacity;
     backface-visibility: hidden;
 }
 
@@ -358,10 +357,9 @@ p {
     margin-bottom: 30px;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    animation: fadeInUp 1.2s ease-out 0.2s forwards;
+    animation: fadeIn 1.2s ease-out 0.2s forwards;
     opacity: 0;
-    transform: translateY(30px);
-    will-change: opacity, transform;
+    will-change: opacity;
     backface-visibility: hidden;
 }
 
@@ -373,10 +371,9 @@ p {
     line-height: 1.5;
     font-weight: 400;
     letter-spacing: 1px;
-    animation: fadeInUp 1.2s ease-out 0.2s forwards;
+    animation: fadeIn 1.2s ease-out 0.2s forwards;
     opacity: 0;
-    transform: translateY(30px);
-    will-change: opacity, transform;
+    will-change: opacity;
     backface-visibility: hidden;
 }
 
@@ -388,10 +385,9 @@ p {
     line-height: 2;
     font-weight: 300;
     letter-spacing: 0.5px;
-    animation: fadeInUp 1.2s ease-out 0.2s forwards;
+    animation: fadeIn 1.2s ease-out 0.2s forwards;
     opacity: 0;
-    transform: translateY(30px);
-    will-change: opacity, transform;
+    will-change: opacity;
     backface-visibility: hidden;
 }
 
@@ -1141,27 +1137,23 @@ p {
 }
 
 /* Animations */
-@keyframes fadeInUp {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
 /* Scroll-triggered animations */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
     transition: all 0.8s ease-out;
 }
 
 .animate-on-scroll.animated {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* Prevent animation interference with section layouts and titles */
