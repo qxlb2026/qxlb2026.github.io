@@ -30,15 +30,6 @@ function switchLanguage(lang) {
         }
     });
     
-    // Update placeholders for form inputs (if any are added later)
-    const placeholderElements = document.querySelectorAll('[data-placeholder-en][data-placeholder-zh]');
-    placeholderElements.forEach(element => {
-        const placeholder = element.getAttribute(`data-placeholder-${lang}`);
-        if (placeholder) {
-            element.placeholder = placeholder;
-        }
-    });
-    
     // Update the language toggle active state and ARIA attributes
     if (langEnOption && langZhOption) {
         if (lang === 'en') {
