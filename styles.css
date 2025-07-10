@@ -104,6 +104,10 @@ p {
     line-height: 1.4;
 }
 
+/* ===================================
+   LAYOUT AND NAVIGATION
+   =================================== */
+
 /* Container */
 .container {
     max-width: 1200px;
@@ -317,6 +321,10 @@ p {
 .rsvp-link:hover::before {
     left: 0;
 }
+
+/* ===================================
+   MAIN CONTENT SECTIONS
+   =================================== */
 
 /* Main Content */
 .main-content {
@@ -1136,6 +1144,10 @@ p {
     position: relative;
 }
 
+/* ===================================
+   ANIMATIONS AND EFFECTS
+   =================================== */
+
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -1154,15 +1166,4 @@ p {
 
 .animate-on-scroll.animated {
     opacity: 1;
-}
-
-/* Prevent animation interference with section layouts */
-.schedule-section.animate-on-scroll,
-.location-section.animate-on-scroll,
-.travel-section.animate-on-scroll,
-.things-section.animate-on-scroll,
-.faq-section.animate-on-scroll {
-    transform: none !important;
-    opacity: 1 !important;
-    transition: none !important;
 }

@@ -241,6 +241,8 @@ function initScrollAnimations() {
 // Save to Calendar functionality - generates .ics files for events
 function addToCalendar(eventId) {
     // Event data with bilingual support
+    // Each event contains: title, date, start/end times, location, and description
+    // Titles and descriptions change based on currentLanguage
     const events = {
         'hawker-dinner': {
             title: currentLanguage === 'en' ? 'Hawker Centre Dinner - Keisha & Robin\'s Wedding' : '小贩中心晚餐 - 琦霞乐彬婚礼',
@@ -292,6 +294,7 @@ function addToCalendar(eventId) {
         }
     };
 
+    // Get the event data for the requested event ID
     const event = events[eventId];
     if (!event) return;
 
