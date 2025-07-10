@@ -1156,14 +1156,12 @@ p {
     opacity: 1;
 }
 
-/* Prevent animation interference with section layouts and titles */
+/* Prevent animation interference with section layouts */
 .schedule-section.animate-on-scroll,
 .location-section.animate-on-scroll,
 .travel-section.animate-on-scroll,
 .things-section.animate-on-scroll,
-.faq-section.animate-on-scroll,
-.section-title.animate-on-scroll,
-.section-title {
+.faq-section.animate-on-scroll {
     transform: none !important;
     opacity: 1 !important;
     transition: none !important;

@@ -217,11 +217,15 @@ function initScrollAnimations() {
 
     // Elements that should animate on scroll
     const elementsToAnimate = [
+        '.section-title',
+        '.day-name',
+        '.day-date',
         '.schedule-event',
         '.faq-item',
         '.travel-item',
         '.things-category',
-        '.activity-item'
+        '.activity-item',
+        '.location-info'
     ];
 
     // Add animation classes and observe each element
@@ -238,53 +242,53 @@ function initScrollAnimations() {
 function addToCalendar(eventId) {
     // Event data with bilingual support
     const events = {
-        'friday-activity-1': {
-            title: currentLanguage === 'en' ? 'Friday Activity 1 - Keisha & Robin Wedding' : '星期五活动一 - 琦霞乐彬婚礼',
+        'hawker-dinner': {
+            title: currentLanguage === 'en' ? 'Hawker Centre Dinner - Keisha & Robin\'s Wedding' : '小贩中心晚餐 - 琦霞乐彬婚礼',
             date: '2026-01-16',
-            startTime: '10:00',
-            endTime: '12:00',
-            location: 'TBD',
-            description: currentLanguage === 'en' ? 'Welcome activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末欢迎活动。详情待公布。'
-        },
-        'friday-activity-2': {
-            title: currentLanguage === 'en' ? 'Friday Activity 2 - Keisha & Robin Wedding' : '星期五活动二 - 琦霞乐彬婚礼',
-            date: '2026-01-16',
-            startTime: '14:00',
-            endTime: '16:00',
-            location: 'TBD',
-            description: currentLanguage === 'en' ? 'Welcome activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末欢迎活动。详情待公布。'
-        },
-        'saturday-activity-1': {
-            title: currentLanguage === 'en' ? 'Saturday Activity 1 - Keisha & Robin Wedding' : '星期六活动一 - 琦霞乐彬婚礼',
-            date: '2026-01-17',
-            startTime: '10:00',
-            endTime: '12:00',
-            location: 'TBD',
-            description: currentLanguage === 'en' ? 'Pre-wedding activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末婚前活动。详情待公布。'
-        },
-        'saturday-activity-2': {
-            title: currentLanguage === 'en' ? 'Saturday Activity 2 - Keisha & Robin Wedding' : '星期六活动二 - 琦霞乐彬婚礼',
-            date: '2026-01-17',
-            startTime: '14:00',
-            endTime: '16:00',
-            location: 'TBD',
-            description: currentLanguage === 'en' ? 'Pre-wedding activity for Keisha & Robin wedding weekend. Details to be announced.' : '琦霞乐彬婚礼周末婚前活动。详情待公布。'
-        },
-        'wedding-ceremony': {
-            title: currentLanguage === 'en' ? 'Keisha & Robin Wedding Ceremony' : '琦霞乐彬婚礼仪式',
-            date: '2026-01-18',
             startTime: '18:00',
+            endTime: '20:00',
+            location: 'Zion Riverside Food Centre, Singapore',
+            description: currentLanguage === 'en' ? 'Join us for dinner at one of Singapore\'s famous hawker centres.' : '来新加坡著名的小贩中心之一与我们共进晚餐。'
+        },
+        'riverside-walk': {
+            title: currentLanguage === 'en' ? 'Riverside Walk - Keisha & Robin\'s Wedding' : '河畔散步 - 琦霞乐彬婚礼',
+            date: '2026-01-16',
+            startTime: '20:00',
+            endTime: '22:00',
+            location: 'Singapore River, Singapore',
+            description: currentLanguage === 'en' ? 'Walk with us along the Singapore River towards Boat Quay and Marina Bay.' : '与我们一起沿着新加坡河走向克拉码头和滨海湾。'
+        },
+        'gallery-tour': {
+            title: currentLanguage === 'en' ? 'Gallery Tour - Keisha & Robin\'s Wedding' : '美术馆参观 - 琦霞乐彬婚礼',
+            date: '2026-01-17',
+            startTime: '13:00',
+            endTime: '15:00',
+            location: 'National Gallery Singapore, Singapore',
+            description: currentLanguage === 'en' ? 'Explore the world\'s largest collection of modern Southeast Asian art.' : '探索世界上最大的现代东南亚艺术收藏。'
+        },
+        'kite-flying': {
+            title: currentLanguage === 'en' ? 'Kite Flying - Keisha & Robin\'s Wedding' : '放风筝 - 琦霞乐彬婚礼',
+            date: '2026-01-17',
+            startTime: '17:00',
             endTime: '19:00',
-            location: 'Claudine Restaurant, 39C Harding Road, Singapore 249541',
-            description: currentLanguage === 'en' ? 'Wedding ceremony of Keisha & Robin at Claudine Restaurant.' : '琦霞乐彬在Claudine餐厅举行的婚礼仪式。'
+            location: 'Marina Barrage, Singapore',
+            description: currentLanguage === 'en' ? 'Fly kites with us at the top of Marina Barrage against the backdrop of the city skyline.' : '和我们一起在滨海堤坝放风筝。'
+        },
+        'garden-walk': {
+            title: currentLanguage === 'en' ? 'Garden Walk - Keisha & Robin\'s Wedding' : '植物园散步 - 琦霞乐彬婚礼',
+            date: '2026-01-18',
+            startTime: '09:00',
+            endTime: '11:00',
+            location: 'Singapore Botanic Gardens, Singapore',
+            description: currentLanguage === 'en' ? 'Come with us for a stroll through the Botanic Gardens, Singapore\'s first UNESCO World Heritage Site.' : '与我们一起漫步新加坡植物园——新加坡首个联合国世界遗产地。'
         },
         'wedding-reception': {
-            title: currentLanguage === 'en' ? 'Keisha & Robin Wedding Reception & Dinner' : '琦霞乐彬婚礼招待会与晚宴',
+            title: currentLanguage === 'en' ? 'Keisha & Robin\'s Wedding Reception & Dinner' : '琦霞乐彬婚礼招待会与晚宴',
             date: '2026-01-18',
-            startTime: '19:30',
-            endTime: '23:00',
+            startTime: '18:30',
+            endTime: '22:30',
             location: 'Claudine Restaurant, 39C Harding Road, Singapore 249541',
-            description: currentLanguage === 'en' ? 'Wedding reception and dinner for Keisha & Robin at Claudine Restaurant.' : '琦霞乐彬在Claudine餐厅举行的婚礼招待会与晚宴。'
+            description: currentLanguage === 'en' ? 'Join us for an evening of celebration and good food alongside friends, old and new.' : '与我们一起享受美食和庆祝活动，老朋友和新朋友齐聚一堂。'
         }
     };
 
