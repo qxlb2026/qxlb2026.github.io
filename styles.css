@@ -683,38 +683,30 @@ p {
     /* Immediate visibility for preloaded images */
     opacity: 1;
     visibility: visible;
-    /* CSS background image properties */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Stable background rendering - prevents disappearing */
-    background-attachment: scroll;
 }
 
-/* Individual photo backgrounds - load with CSS for instant display */
-.photo-1 { 
-    background-image: url('1 - RX-min.jpg'); 
+/* Stable IMG element styling for gallery photos */
+.gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    /* Mobile-optimized properties for stable rendering */
+    will-change: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Prevent mobile browser optimizations that cause flickering */
+    image-rendering: auto;
 }
 
-.photo-2 { 
-    background-image: url('2 - RXKO-min.jpg'); 
-}
-
-.photo-3 { 
-    background-image: url('3 - KO-min.jpg'); 
-}
-
-.photo-4 { 
-    background-image: url('4 - RXKO-min.jpg'); 
-}
-
-.photo-5 { 
-    background-image: url('5 - RXKO-min.jpg'); 
-}
-
-.photo-6 { 
-    background-image: url('6 - RXKO-min.jpg'); 
-}
+/* Remove individual photo background rules - no longer needed */
+/* .photo-1 { background-image: url('1 - RX-min.jpg'); } */
+/* .photo-2 { background-image: url('2 - RXKO-min.jpg'); } */
+/* .photo-3 { background-image: url('3 - KO-min.jpg'); } */
+/* .photo-4 { background-image: url('4 - RXKO-min.jpg'); } */
+/* .photo-5 { background-image: url('5 - RXKO-min.jpg'); } */
+/* .photo-6 { background-image: url('6 - RXKO-min.jpg'); } */
 
 /* Things to Do Section */
 .things-section {
@@ -1005,6 +997,14 @@ p {
     
     .photo-item {
         height: 600px;
+        /* Prevent mobile layer issues */
+        transform: none;
+    }
+    
+    .gallery-photo {
+        /* Force stable rendering on mobile */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
     }
     
     .things-grid {

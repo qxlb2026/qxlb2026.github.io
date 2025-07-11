@@ -49,16 +49,36 @@
 // This class is removed after the page loads to enable smooth transitions
 document.body.classList.add('preload');
 
-// Enhanced image loading for CSS background images
+// Enhanced image loading for IMG elements
 function forceImageLoading() {
-    const galleryItems = document.querySelectorAll('.photo-item[class*="photo-"]');
+    const galleryImages = document.querySelectorAll('.gallery-photo');
     
-    galleryItems.forEach((item) => {
-        // CSS backgrounds load automatically with the stylesheet
-        // Just mark them as loaded for any animations/effects
-        item.classList.add('image-loaded');
-        item.style.opacity = '1';
-        item.style.visibility = 'visible';
+    galleryImages.forEach((img) => {
+        const container = img.parentElement;
+        
+        // Force immediate visibility
+        img.style.opacity = '1';
+        img.style.visibility = 'visible';
+        
+        // Handle successful load
+        const handleLoad = () => {
+            container.classList.add('image-loaded');
+        };
+        
+        // Handle error
+        const handleError = () => {
+            console.warn(`Failed to load image: ${img.src}`);
+            container.classList.add('image-error');
+        };
+        
+        // Add event listeners with passive option for better performance
+        img.addEventListener('load', handleLoad, { once: true, passive: true });
+        img.addEventListener('error', handleError, { once: true, passive: true });
+        
+        // For already cached/loaded images
+        if (img.complete && img.naturalHeight !== 0) {
+            handleLoad();
+        }
     });
 }
 
