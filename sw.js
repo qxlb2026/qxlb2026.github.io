@@ -22,7 +22,7 @@ self.addEventListener('install', (event) => {
                 return self.skipWaiting();
             })
             .catch((error) => {
-                console.error('Failed to cache photos:', error);
+                // Silently handle cache errors in production
             })
     );
 });
@@ -77,7 +77,7 @@ self.addEventListener('fetch', (event) => {
                         });
                 })
                 .catch(() => {
-                    console.error('Failed to fetch image:', event.request.url);
+                    // Silently handle fetch errors in production
                 })
         );
     }

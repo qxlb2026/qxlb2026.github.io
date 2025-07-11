@@ -664,37 +664,6 @@ p {
     position: relative;
 }
 
-/* ULTRA-SIMPLIFIED TEST - Make travel-section exactly like photo-section */
-.travel-section:has(.ultra-simple-test) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 500px;
-    padding: 60px 24px;
-}
-
-.gallery-photo.ultra-simple-test {
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 12px;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .travel-section:has(.ultra-simple-test) {
-        padding: 40px 16px;
-        min-height: 400px;
-    }
-    
-    .gallery-photo.ultra-simple-test {
-        height: 300px;
-        max-width: 90%;
-    }
-}
-
 /* STABLE FLEXBOX VERSION - Preserves original design without CSS Grid issues */
 .travel-section:has(.simple-photo-container) {
     padding: 120px 0;
@@ -747,15 +716,7 @@ p {
     }
 }
 
-/* Photo Gallery Styles - Simplified like bottom image */
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    min-height: 500px;
-}
-
-/* Simple IMG styling - exactly like .bottom-photo that works perfectly */
+/* Gallery photo styling - optimized for performance and stability */
 .gallery-photo {
     width: 100%;
     height: 500px;
@@ -764,14 +725,6 @@ p {
     display: block;
     border-radius: 12px;
 }
-
-/* Remove individual photo background rules - no longer needed */
-/* .photo-1 { background-image: url('1 - RX-min.jpg'); } */
-/* .photo-2 { background-image: url('2 - RXKO-min.jpg'); } */
-/* .photo-3 { background-image: url('3 - KO-min.jpg'); } */
-/* .photo-4 { background-image: url('4 - RXKO-min.jpg'); } */
-/* .photo-5 { background-image: url('5 - RXKO-min.jpg'); } */
-/* .photo-6 { background-image: url('6 - RXKO-min.jpg'); } */
 
 /* Things to Do Section */
 .things-section {
@@ -921,12 +874,6 @@ p {
 
 /* Tablet styles */
 @media (max-width: 1024px) {
-    .photo-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-        min-height: 500px;
-    }
-    
     .gallery-photo {
         height: 500px;
     }
@@ -1056,12 +1003,6 @@ p {
     
     .faq-item {
         padding: 24px;
-    }
-    
-    .photo-gallery {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        min-height: 600px;
     }
     
     .gallery-photo {

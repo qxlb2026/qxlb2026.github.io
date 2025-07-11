@@ -18,8 +18,6 @@
     // Mobile memory persistence test - force images to stay in memory
     function createPersistentImageCache() {
         if (window.matchMedia('(max-width: 768px)').matches) {
-            console.log('📱 Mobile detected - creating persistent image cache');
-            
             // Create hidden persistent container
             const persistentContainer = document.createElement('div');
             persistentContainer.id = 'persistent-image-cache';
@@ -51,16 +49,11 @@
                 hiddenImg.setAttribute('aria-hidden', 'true');
                 hiddenImg.alt = '';
                 
-                hiddenImg.onload = () => {
-                    console.log(`✅ Persistent cache loaded: ${url}`);
-                };
-                
                 persistentContainer.appendChild(hiddenImg);
             });
             
             // Add to body immediately
             document.body.appendChild(persistentContainer);
-            console.log('🔒 Mobile persistent image cache created');
         }
     }
     
@@ -116,8 +109,6 @@ function forceImageLoading() {
             img.style.transform = 'translateZ(0)';
             img.style.willChange = 'auto';
             img.style.backfaceVisibility = 'hidden';
-            
-            console.log(`🔒 Mobile memory lock applied: ${img.src}`);
         } else {
             // Desktop - simple loading
             img.style.opacity = '1';
@@ -131,7 +122,6 @@ function forceImageLoading() {
             // Additional mobile persistence after load
             if (window.matchMedia('(max-width: 768px)').matches) {
                 img.style.transform = 'translateZ(0)';
-                console.log(`✅ Mobile image locked in memory: ${img.src}`);
             }
         };
         
