@@ -2,6 +2,46 @@
 // This class is removed after the page loads to enable smooth transitions
 document.body.classList.add('preload');
 
+// Force immediate image loading for gallery photos
+function forceImageLoading() {
+    const galleryImages = document.querySelectorAll('.gallery-photo');
+    
+    galleryImages.forEach((img) => {
+        const container = img.parentElement;
+        
+        // Check if image is already loaded
+        if (img.complete && img.naturalHeight !== 0) {
+            container.classList.add('image-loaded');
+            return;
+        }
+        
+        // Handle successful load
+        const handleLoad = () => {
+            container.classList.add('image-loaded');
+        };
+        
+        // Handle error
+        const handleError = () => {
+            console.warn(`Failed to load image: ${img.src}`);
+            container.classList.add('image-error');
+        };
+        
+        // Add event listeners with passive option for better performance
+        img.addEventListener('load', handleLoad, { once: true, passive: true });
+        img.addEventListener('error', handleError, { once: true, passive: true });
+        
+        // For already cached images, trigger load event
+        if (img.complete) {
+            handleLoad();
+        }
+    });
+}
+
+// Start loading images when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    forceImageLoading();
+});
+
 // Remove preload class after page loads to enable animations
 window.addEventListener('load', () => {
     document.body.classList.remove('preload');
@@ -104,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add active state to navigation links based on scroll position
+    let scrollTimeout;
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
@@ -128,8 +169,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Update active nav link on scroll
-    window.addEventListener('scroll', updateActiveNavLink);
+    // Throttled scroll handler for better performance
+    function handleScroll() {
+        if (scrollTimeout) {
+            return;
+        }
+        
+        scrollTimeout = setTimeout(() => {
+            updateActiveNavLink();
+            scrollTimeout = null;
+        }, 16); // ~60fps
+    }
+    
+    // Update active nav link on scroll with passive listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
     updateActiveNavLink(); // Call once on load
 
     // Mobile navigation toggle
@@ -205,20 +258,22 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
+                // Use requestAnimationFrame for smooth animations
+                requestAnimationFrame(() => {
+                    entry.target.classList.add('animated');
+                });
                 observer.unobserve(entry.target); // Stop observing after animation
             }
         });
     }, observerOptions);
 
-    // Elements that should animate on scroll
+    // Elements that should animate on scroll (excluding photo gallery for smooth scrolling)
     const elementsToAnimate = [
         '.section-title',
         '.day-name',
         '.day-date',
         '.schedule-event',
         '.faq-item',
-        '.travel-item',
         '.things-category',
         '.activity-item',
         '.location-info'

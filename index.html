@@ -28,6 +28,14 @@
     <!-- Load Inter font with display=block to prevent FOUT -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
     
+    <!-- Preload critical gallery images for faster loading -->
+    <link rel="preload" as="image" href="1 - RX-min.jpg">
+    <link rel="preload" as="image" href="2 - RXKO-min.jpg">
+    <link rel="preload" as="image" href="3 - KO-min.jpg">
+    <link rel="preload" as="image" href="4 - RXKO-min.jpg">
+    <link rel="preload" as="image" href="5 - RXKO-min.jpg">
+    <link rel="preload" as="image" href="6 - RXKO-min.jpg">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,7 +51,7 @@
                     <div class="nav-menu" id="nav-menu" role="menu">
                         <a href="#schedule" role="menuitem" data-en="Schedule" data-zh="日程">Schedule</a>
                         <a href="#location" role="menuitem" data-en="Location" data-zh="地点">Location</a>
-                        <a href="#travel" role="menuitem" data-en="Travel" data-zh="旅行">Travel</a>
+                        <a href="#travel" role="menuitem" data-en="Photos" data-zh="照片">Photos</a>
                         <a href="#activities" role="menuitem" data-en="Activities" data-zh="景点">Activities</a>
                         <a href="#faq" role="menuitem" data-en="FAQ" data-zh="常见问题">FAQ</a>
                     </div>
@@ -205,27 +213,24 @@
 
         <section id="travel" class="travel-section">
             <div class="container">
-                <h2 class="section-title" data-en="Travel & Accommodation" data-zh="旅行和住宿">Travel & Accommodation</h2>
-                <div class="travel-grid">
-                    <div class="travel-info">
-                        <div class="travel-item">
-                            <h3 data-en="Recommended Hotel" data-zh="推荐酒店">Recommended Hotel</h3>
-                            <h4 data-en="JEN Singapore Tanglin by Shangri-La" data-zh="新加坡东陵JEN酒店">JEN Singapore Tanglin by Shangri-La</h4>
-                            <p data-en="A modern hotel located in the heart of Singapore's Orchard Road shopping district, close to the wedding venue." data-zh="位于新加坡乌节路购物区中心的现代酒店，靠近婚礼场地。">A modern hotel located in the heart of Singapore's Orchard Road shopping district, close to the wedding venue.</p>
-                        </div>
-                        
-                        <div class="travel-item">
-                            <h3 data-en="Getting to Singapore" data-zh="前往新加坡">Getting to Singapore</h3>
-                            <p data-en="Fly into Singapore Changi Airport (SIN), one of the world's best airports with excellent facilities and connections." data-zh="飞抵新加坡樟宜机场(SIN)，世界最佳机场之一，设施完善，交通便利。">Fly into Singapore Changi Airport (SIN), one of the world's best airports with excellent facilities and connections.</p>
-                        </div>
-                        
-                        <div class="travel-item">
-                            <h3 data-en="Getting Around" data-zh="出行方式">Getting Around</h3>
-                            <p data-en="Car sharing apps: Grab, CDG Zig, TADA, or Gojek provide convenient transportation. Singapore's excellent public transportation system (MRT and buses) accepts contactless credit cards directly." data-zh="共享汽车应用程序：Grab、CDG Zig、TADA或Gojek提供便捷交通。新加坡优秀的公共交通系统(地铁和巴士)直接接受非接触式信用卡。">Car sharing apps: Grab, CDG Zig, TADA, or Gojek provide convenient transportation. Singapore's excellent public transportation system (MRT and buses) accepts contactless credit cards directly.</p>
-                        </div>
+                <div class="photo-gallery">
+                    <div class="photo-item">
+                        <img src="1 - RX-min.jpg" alt="Robin - wedding couple portrait" class="gallery-photo" width="400" height="500" fetchpriority="high">
                     </div>
-                    <div class="travel-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7845325328913!2d103.8239282!3d1.3043259999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da198a37c98e75%3A0x752706f1a8be0e56!2sJEN%20Singapore%20Tanglin%20by%20Shangri-La!5e0!3m2!1sen!2ssg!4v1751991147784!5m2!1sen!2ssg" width="100%" height="400" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="photo-item">
+                        <img src="2 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500" fetchpriority="high">
+                    </div>
+                    <div class="photo-item">
+                        <img src="3 - KO-min.jpg" alt="KO - wedding friend portrait" class="gallery-photo" width="400" height="500" fetchpriority="high">
+                    </div>
+                    <div class="photo-item">
+                        <img src="4 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500">
+                    </div>
+                    <div class="photo-item">
+                        <img src="5 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500">
+                    </div>
+                    <div class="photo-item">
+                        <img src="6 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500">
                     </div>
                 </div>
             </div>
