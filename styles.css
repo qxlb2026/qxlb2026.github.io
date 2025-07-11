@@ -669,9 +669,6 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    /* Performance optimizations */
-    contain: layout style paint;
-    will-change: auto;
     /* Prevent layout shifts during loading */
     min-height: 500px;
 }
@@ -680,11 +677,9 @@ p {
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    background: #f8f8f8;
+    background-color: #f8f8f8;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     height: 500px;
-    /* Performance optimizations */
-    contain: layout style paint;
     /* Immediate visibility for preloaded images */
     opacity: 1;
     visibility: visible;
@@ -692,6 +687,8 @@ p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    /* Stable background rendering - prevents disappearing */
+    background-attachment: scroll;
 }
 
 /* Individual photo backgrounds - load with CSS for instant display */
