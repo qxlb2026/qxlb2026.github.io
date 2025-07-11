@@ -240,10 +240,18 @@ function addToCalendar(eventId) {
     // Each event contains: title, date, start/end times, location, and description
     // Titles and descriptions change based on currentLanguage
     const events = {
+        'forest-hike': {
+            title: currentLanguage === 'en' ? 'Forest Hike - Keisha & Robin\'s Wedding' : '森林徒步 - 琦霞乐彬婚礼',
+            date: '2026-01-16',
+            startTime: '15:00',
+            endTime: '17:00',
+            location: 'MacRitchie Reservoir Park, Singapore',
+            description: currentLanguage === 'en' ? 'See monkeys and wild boars as we visit the TreeTop Walk. It\'s not too hot under the shade!' : '跟我们一起参观树梢吊桥。您可能会遇见猴子和野猪。树荫下可是相当凉快呢！'
+        },
         'hawker-dinner': {
             title: currentLanguage === 'en' ? 'Hawker Centre Dinner - Keisha & Robin\'s Wedding' : '小贩中心晚餐 - 琦霞乐彬婚礼',
             date: '2026-01-16',
-            startTime: '18:00',
+            startTime: '18:30',
             endTime: '20:00',
             location: 'Zion Riverside Food Centre, Singapore',
             description: currentLanguage === 'en' ? 'Join us for dinner at one of Singapore\'s famous hawker centres.' : '来新加坡著名的小贩中心之一与我们共进晚餐。'
@@ -257,20 +265,28 @@ function addToCalendar(eventId) {
             description: currentLanguage === 'en' ? 'Walk with us along the Singapore River towards Boat Quay and Marina Bay.' : '与我们一起沿着新加坡河走向克拉码头和滨海湾。'
         },
         'gallery-tour': {
-            title: currentLanguage === 'en' ? 'Gallery Tour - Keisha & Robin\'s Wedding' : '美术馆参观 - 琦霞乐彬婚礼',
+            title: currentLanguage === 'en' ? 'Gallery Viewing - Keisha & Robin\'s Wedding' : '美术馆参观 - 琦霞乐彬婚礼',
             date: '2026-01-17',
-            startTime: '13:00',
-            endTime: '15:00',
+            startTime: '13:30',
+            endTime: '15:30',
             location: 'National Gallery Singapore, Singapore',
             description: currentLanguage === 'en' ? 'Explore the world\'s largest collection of modern Southeast Asian art.' : '探索世界上最大的现代东南亚艺术收藏。'
+        },
+        'duck-tour': {
+            title: currentLanguage === 'en' ? 'Duck Tour - Keisha & Robin\'s Wedding' : '鸭子游船 - 琦霞乐彬婚礼',
+            date: '2026-01-17',
+            startTime: '16:00',
+            endTime: '17:00',
+            location: 'Suntec City Tourist Hub, Singapore',
+            description: currentLanguage === 'en' ? 'View some of Singapore\'s most iconic sites while floating down the Singapore River.' : '在新加坡河上欣赏新加坡一些最具标志性的景点。'
         },
         'kite-flying': {
             title: currentLanguage === 'en' ? 'Kite Flying - Keisha & Robin\'s Wedding' : '放风筝 - 琦霞乐彬婚礼',
             date: '2026-01-17',
-            startTime: '17:00',
-            endTime: '19:00',
+            startTime: '17:30',
+            endTime: '19:30',
             location: 'Marina Barrage, Singapore',
-            description: currentLanguage === 'en' ? 'Fly kites with us at the top of Marina Barrage against the backdrop of the city skyline.' : '和我们一起在滨海堤坝放风筝。'
+            description: currentLanguage === 'en' ? 'Fly kites with us at the top of Marina Barrage against the backdrop of the city skyline.' : '与我们一起在滨海堤坝放风筝。'
         },
         'garden-walk': {
             title: currentLanguage === 'en' ? 'Garden Walk - Keisha & Robin\'s Wedding' : '植物园散步 - 琦霞乐彬婚礼',
