@@ -1072,3 +1072,9 @@ p {
 .animate-on-scroll.animated {
     opacity: 1;
 }
+
+/* Image error state */
+.image-error {
+    opacity: 0.5;
+    filter: grayscale(1);
+}

@@ -27,7 +27,6 @@
             
             img.onload = () => {
                 imageCache.set(url, img);
-                console.log(`Preloaded: ${url}`);
             };
             
             img.onerror = () => {
@@ -108,10 +107,10 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
             .then((registration) => {
-                console.log('Service Worker registered for photo caching: ', registration);
+                // Service worker registered successfully
             })
             .catch((registrationError) => {
-                console.log('Service Worker registration failed: ', registrationError);
+                console.warn('Service Worker registration failed: ', registrationError);
             });
     });
 }

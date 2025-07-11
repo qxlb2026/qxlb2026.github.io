@@ -13,15 +13,12 @@ const PHOTO_URLS = [
 
 // Install event - cache photos immediately
 self.addEventListener('install', (event) => {
-    console.log('Service Worker installing...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('Caching wedding photos...');
                 return cache.addAll(PHOTO_URLS);
             })
             .then(() => {
-                console.log('All photos cached successfully');
                 return self.skipWaiting();
             })
             .catch((error) => {
@@ -32,13 +29,11 @@ self.addEventListener('install', (event) => {
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
-    console.log('Service Worker activating...');
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
                     if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
@@ -59,7 +54,6 @@ self.addEventListener('fetch', (event) => {
             caches.match(event.request)
                 .then((response) => {
                     if (response) {
-                        console.log('Serving from cache:', event.request.url);
                         return response;
                     }
                     
