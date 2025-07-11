@@ -664,6 +664,37 @@ p {
     position: relative;
 }
 
+/* ULTRA-SIMPLIFIED TEST - Make travel-section exactly like photo-section */
+.travel-section:has(.ultra-simple-test) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    padding: 60px 24px;
+}
+
+.gallery-photo.ultra-simple-test {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .travel-section:has(.ultra-simple-test) {
+        padding: 40px 16px;
+        min-height: 400px;
+    }
+    
+    .gallery-photo.ultra-simple-test {
+        height: 300px;
+        max-width: 90%;
+    }
+}
+
 /* Photo Gallery Styles - Simplified like bottom image */
 .photo-gallery {
     display: grid;
