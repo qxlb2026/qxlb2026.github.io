@@ -15,6 +15,55 @@
     // Cache for loaded images
     const imageCache = new Map();
     
+    // Mobile memory persistence test - force images to stay in memory
+    function createPersistentImageCache() {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            console.log('📱 Mobile detected - creating persistent image cache');
+            
+            // Create hidden persistent container
+            const persistentContainer = document.createElement('div');
+            persistentContainer.id = 'persistent-image-cache';
+            persistentContainer.style.cssText = `
+                position: fixed;
+                top: -9999px;
+                left: -9999px;
+                width: 1px;
+                height: 1px;
+                opacity: 0;
+                pointer-events: none;
+                z-index: -9999;
+                overflow: hidden;
+            `;
+            
+            // Create persistent hidden images
+            photoUrls.forEach((url, index) => {
+                const hiddenImg = document.createElement('img');
+                hiddenImg.src = url;
+                hiddenImg.style.cssText = `
+                    width: 1px;
+                    height: 1px;
+                    position: absolute;
+                    opacity: 0;
+                    pointer-events: none;
+                `;
+                hiddenImg.loading = 'eager';
+                hiddenImg.fetchPriority = 'high';
+                hiddenImg.setAttribute('aria-hidden', 'true');
+                hiddenImg.alt = '';
+                
+                hiddenImg.onload = () => {
+                    console.log(`✅ Persistent cache loaded: ${url}`);
+                };
+                
+                persistentContainer.appendChild(hiddenImg);
+            });
+            
+            // Add to body immediately
+            document.body.appendChild(persistentContainer);
+            console.log('🔒 Mobile persistent image cache created');
+        }
+    }
+    
     // Preload images immediately 
     function preloadImages() {
         photoUrls.forEach((url, index) => {
@@ -38,7 +87,8 @@
         });
     }
     
-    // Start preloading as soon as script executes
+    // Initialize both strategies
+    createPersistentImageCache();
     preloadImages();
     
     // Make cache available globally
@@ -54,10 +104,35 @@ function forceImageLoading() {
     const galleryImages = document.querySelectorAll('.gallery-photo');
     
     galleryImages.forEach((img) => {
-        // Simple loading like .bottom-photo that always works
+        // Mobile-specific memory persistence
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            // Force immediate display and prevent unloading
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
+            img.loading = 'eager';
+            img.decoding = 'sync';
+            
+            // Force GPU layer to prevent mobile unloading
+            img.style.transform = 'translateZ(0)';
+            img.style.willChange = 'auto';
+            img.style.backfaceVisibility = 'hidden';
+            
+            console.log(`🔒 Mobile memory lock applied: ${img.src}`);
+        } else {
+            // Desktop - simple loading
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
+        }
+        
         const handleLoad = () => {
             img.style.opacity = '1';
             img.style.visibility = 'visible';
+            
+            // Additional mobile persistence after load
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                img.style.transform = 'translateZ(0)';
+                console.log(`✅ Mobile image locked in memory: ${img.src}`);
+            }
         };
         
         const handleError = () => {
