@@ -688,29 +688,35 @@ p {
     /* Immediate visibility for preloaded images */
     opacity: 1;
     visibility: visible;
+    /* CSS background image properties */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.gallery-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    /* Critical for immediate display */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prevent any layout interference */
-    position: relative;
-    z-index: 1;
-    /* Performance optimizations */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    /* Prevent reflow during loading */
-    min-height: 100%;
-    min-width: 100%;
-    /* Remove any transitions that delay display */
-    transition: none !important;
-    animation: none !important;
+/* Individual photo backgrounds - load with CSS for instant display */
+.photo-1 { 
+    background-image: url('1 - RX-min.jpg'); 
+}
+
+.photo-2 { 
+    background-image: url('2 - RXKO-min.jpg'); 
+}
+
+.photo-3 { 
+    background-image: url('3 - KO-min.jpg'); 
+}
+
+.photo-4 { 
+    background-image: url('4 - RXKO-min.jpg'); 
+}
+
+.photo-5 { 
+    background-image: url('5 - RXKO-min.jpg'); 
+}
+
+.photo-6 { 
+    background-image: url('6 - RXKO-min.jpg'); 
 }
 
 /* Things to Do Section */

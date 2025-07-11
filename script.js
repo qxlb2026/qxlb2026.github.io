@@ -49,51 +49,16 @@
 // This class is removed after the page loads to enable smooth transitions
 document.body.classList.add('preload');
 
-// Enhanced image loading that uses preloaded cache
+// Enhanced image loading for CSS background images
 function forceImageLoading() {
-    const galleryImages = document.querySelectorAll('.gallery-photo');
+    const galleryItems = document.querySelectorAll('.photo-item[class*="photo-"]');
     
-    galleryImages.forEach((img) => {
-        const container = img.parentElement;
-        const src = img.getAttribute('src');
-        
-        // Check if image is in cache first
-        if (window.photoCache && window.photoCache.has(src)) {
-            container.classList.add('image-loaded');
-            img.style.opacity = '1';
-            img.style.visibility = 'visible';
-            return;
-        }
-        
-        // Check if image is already loaded
-        if (img.complete && img.naturalHeight !== 0) {
-            container.classList.add('image-loaded');
-            img.style.opacity = '1';
-            img.style.visibility = 'visible';
-            return;
-        }
-        
-        // Handle successful load
-        const handleLoad = () => {
-            container.classList.add('image-loaded');
-            img.style.opacity = '1';
-            img.style.visibility = 'visible';
-        };
-        
-        // Handle error
-        const handleError = () => {
-            console.warn(`Failed to load image: ${img.src}`);
-            container.classList.add('image-error');
-        };
-        
-        // Add event listeners with passive option for better performance
-        img.addEventListener('load', handleLoad, { once: true, passive: true });
-        img.addEventListener('error', handleError, { once: true, passive: true });
-        
-        // For already cached images, trigger load event
-        if (img.complete) {
-            handleLoad();
-        }
+    galleryItems.forEach((item) => {
+        // CSS backgrounds load automatically with the stylesheet
+        // Just mark them as loaded for any animations/effects
+        item.classList.add('image-loaded');
+        item.style.opacity = '1';
+        item.style.visibility = 'visible';
     });
 }
 
