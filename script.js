@@ -1,23 +1,84 @@
+// AGGRESSIVE PHOTO PRELOADING - Start immediately when script loads
+(function() {
+    'use strict';
+    
+    // Photo URLs to preload
+    const photoUrls = [
+        '1 - RX-min.jpg',
+        '2 - RXKO-min.jpg', 
+        '3 - KO-min.jpg',
+        '4 - RXKO-min.jpg',
+        '5 - RXKO-min.jpg',
+        '6 - RXKO-min.jpg'
+    ];
+    
+    // Cache for loaded images
+    const imageCache = new Map();
+    
+    // Preload images immediately 
+    function preloadImages() {
+        photoUrls.forEach((url, index) => {
+            const img = new Image();
+            
+            // Set fetchpriority for first 3 images
+            if (index < 3) {
+                img.fetchPriority = 'high';
+            }
+            
+            img.onload = () => {
+                imageCache.set(url, img);
+                console.log(`Preloaded: ${url}`);
+            };
+            
+            img.onerror = () => {
+                console.warn(`Failed to preload: ${url}`);
+            };
+            
+            // Start loading immediately
+            img.src = url;
+        });
+    }
+    
+    // Start preloading as soon as script executes
+    preloadImages();
+    
+    // Make cache available globally
+    window.photoCache = imageCache;
+})();
+
 // Prevent transition flash on page load by adding preload class
 // This class is removed after the page loads to enable smooth transitions
 document.body.classList.add('preload');
 
-// Force immediate image loading for gallery photos
+// Enhanced image loading that uses preloaded cache
 function forceImageLoading() {
     const galleryImages = document.querySelectorAll('.gallery-photo');
     
     galleryImages.forEach((img) => {
         const container = img.parentElement;
+        const src = img.getAttribute('src');
+        
+        // Check if image is in cache first
+        if (window.photoCache && window.photoCache.has(src)) {
+            container.classList.add('image-loaded');
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
+            return;
+        }
         
         // Check if image is already loaded
         if (img.complete && img.naturalHeight !== 0) {
             container.classList.add('image-loaded');
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
             return;
         }
         
         // Handle successful load
         const handleLoad = () => {
             container.classList.add('image-loaded');
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
         };
         
         // Handle error
@@ -42,9 +103,27 @@ document.addEventListener('DOMContentLoaded', () => {
     forceImageLoading();
 });
 
+// Register service worker for aggressive photo caching
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker registered for photo caching: ', registration);
+            })
+            .catch((registrationError) => {
+                console.log('Service Worker registration failed: ', registrationError);
+            });
+    });
+}
+
 // Remove preload class after page loads to enable animations
 window.addEventListener('load', () => {
     document.body.classList.remove('preload');
+    
+    // Force another check for images after full page load
+    setTimeout(() => {
+        forceImageLoading();
+    }, 100);
 });
 
 // Language toggle functionality

@@ -28,13 +28,16 @@
     <!-- Load Inter font with display=block to prevent FOUT -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
     
-    <!-- Preload critical gallery images for faster loading -->
-    <link rel="preload" as="image" href="1 - RX-min.jpg">
-    <link rel="preload" as="image" href="2 - RXKO-min.jpg">
-    <link rel="preload" as="image" href="3 - KO-min.jpg">
-    <link rel="preload" as="image" href="4 - RXKO-min.jpg">
-    <link rel="preload" as="image" href="5 - RXKO-min.jpg">
-    <link rel="preload" as="image" href="6 - RXKO-min.jpg">
+    <!-- HIGHEST PRIORITY: Preload all gallery images immediately -->
+    <link rel="preload" as="image" href="1 - RX-min.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="2 - RXKO-min.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="3 - KO-min.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="4 - RXKO-min.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="5 - RXKO-min.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="6 - RXKO-min.jpg" fetchpriority="high">
+    <!-- Preload hero and bottom section images -->
+    <link rel="preload" as="image" href="NZ_Keisha-Robin_Centred.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="Cape-Naturaliste.jpg">
     
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -215,22 +218,22 @@
             <div class="container">
                 <div class="photo-gallery">
                     <div class="photo-item">
-                        <img src="1 - RX-min.jpg" alt="Robin - wedding couple portrait" class="gallery-photo" width="400" height="500" fetchpriority="high">
+                        <img src="1 - RX-min.jpg" alt="Robin - wedding couple portrait" class="gallery-photo" width="400" height="500" fetchpriority="high" style="opacity: 1; visibility: visible;">
                     </div>
                     <div class="photo-item">
-                        <img src="2 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500" fetchpriority="high">
+                        <img src="2 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500" fetchpriority="high" style="opacity: 1; visibility: visible;">
                     </div>
                     <div class="photo-item">
-                        <img src="3 - KO-min.jpg" alt="KO - wedding friend portrait" class="gallery-photo" width="400" height="500" fetchpriority="high">
+                        <img src="3 - KO-min.jpg" alt="KO - wedding friend portrait" class="gallery-photo" width="400" height="500" fetchpriority="high" style="opacity: 1; visibility: visible;">
                     </div>
                     <div class="photo-item">
-                        <img src="4 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500">
+                        <img src="4 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500" fetchpriority="high" style="opacity: 1; visibility: visible;">
                     </div>
                     <div class="photo-item">
-                        <img src="5 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500">
+                        <img src="5 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500" fetchpriority="high" style="opacity: 1; visibility: visible;">
                     </div>
                     <div class="photo-item">
-                        <img src="6 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500">
+                        <img src="6 - RXKO-min.jpg" alt="Robin, Keisha, and KO - wedding couple with friend" class="gallery-photo" width="400" height="500" fetchpriority="high" style="opacity: 1; visibility: visible;">
                     </div>
                 </div>
             </div>

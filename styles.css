@@ -669,8 +669,11 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    /* Optimize for smooth scrolling */
-    contain: layout style;
+    /* Performance optimizations */
+    contain: layout style paint;
+    will-change: auto;
+    /* Prevent layout shifts during loading */
+    min-height: 500px;
 }
 
 .photo-item {
@@ -680,17 +683,34 @@ p {
     background: #f8f8f8;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     height: 500px;
-    /* Optimize for smooth scrolling */
-    contain: layout style;
+    /* Performance optimizations */
+    contain: layout style paint;
+    /* Immediate visibility for preloaded images */
+    opacity: 1;
+    visibility: visible;
 }
 
 .gallery-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    /* Optimize for smooth scrolling */
-    will-change: auto;
+    border-radius: 12px;
+    /* Critical for immediate display */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prevent any layout interference */
+    position: relative;
+    z-index: 1;
+    /* Performance optimizations */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    /* Prevent reflow during loading */
+    min-height: 100%;
+    min-width: 100%;
+    /* Remove any transitions that delay display */
+    transition: none !important;
+    animation: none !important;
 }
 
 /* Things to Do Section */
@@ -844,6 +864,7 @@ p {
     .photo-gallery {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
+        min-height: 500px;
     }
 }
 
@@ -976,6 +997,7 @@ p {
     .photo-gallery {
         grid-template-columns: 1fr;
         gap: 20px;
+        min-height: 600px;
     }
     
     .photo-item {
