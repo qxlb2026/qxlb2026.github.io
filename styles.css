@@ -664,45 +664,22 @@ p {
     position: relative;
 }
 
-/* Photo Gallery Styles */
+/* Photo Gallery Styles - Simplified like bottom image */
 .photo-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    /* Prevent layout shifts during loading */
     min-height: 500px;
-    /* Container stability for mobile */
-    contain: layout style;
-    will-change: auto;
 }
 
-.photo-item {
-    /* Simplified container - minimal properties to prevent mobile issues */
-    height: 500px;
-    /* Remove problematic container properties for mobile stability */
-    /* No overflow, background-color, box-shadow, border-radius on container */
-    /* These are moved to .gallery-photo for better control */
-}
-
-/* Stable IMG element styling for gallery photos */
+/* Simple IMG styling - exactly like .bottom-photo that works perfectly */
 .gallery-photo {
     width: 100%;
-    height: 100%;
+    height: 500px;
     object-fit: cover;
+    object-position: center;
     display: block;
-    /* Move visual styling to img element for better mobile control */
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    background-color: #f8f8f8;
-    /* Mobile-optimized properties for stable rendering */
-    will-change: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    /* Prevent mobile browser optimizations that cause flickering */
-    image-rendering: auto;
-    /* Ensure images are always visible */
-    opacity: 1;
-    visibility: visible;
 }
 
 /* Remove individual photo background rules - no longer needed */
@@ -865,12 +842,9 @@ p {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
         min-height: 500px;
-        /* Tablet-specific container stability */
-        contain: layout style;
     }
     
-    .photo-item {
-        /* Consistent height on tablet */
+    .gallery-photo {
         height: 500px;
     }
 }
@@ -1005,35 +979,10 @@ p {
         grid-template-columns: 1fr;
         gap: 20px;
         min-height: 600px;
-        /* Mobile-specific container optimizations */
-        contain: layout style;
-        overflow: visible;
-        /* Force stable grid on mobile */
-        grid-auto-rows: 600px;
-    }
-    
-    .photo-item {
-        height: 600px;
-        /* Ensure minimal container complexity on mobile */
-        position: static;
-        overflow: visible;
-        /* Prevent mobile layer issues */
-        transform: none;
-        will-change: auto;
     }
     
     .gallery-photo {
-        /* Enhanced mobile stability */
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        /* Prevent mobile rendering glitches */
-        -webkit-overflow-scrolling: touch;
-        /* Force GPU acceleration for smooth rendering */
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        /* Ensure stable positioning */
-        position: relative;
-        z-index: 1;
+        height: 600px;
     }
     
     .things-grid {
