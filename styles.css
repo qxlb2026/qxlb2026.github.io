@@ -917,6 +917,11 @@ p {
         margin: 0 !important;
     }
     
+    /* Hide photos navigation link on mobile since section is hidden */
+    .nav-menu a[href="#photos"] {
+        display: none !important;
+    }
+    
     /* Update alternating colors for mobile since photos section is hidden */
     .things-section {
         background: #fefefe;
