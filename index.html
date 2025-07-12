@@ -25,22 +25,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Load Crimson Pro and Noto Serif SC fonts with display=block to prevent FOUT -->
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@300;400;500;600;700&display=block" rel="stylesheet">
+    <!-- Load Crimson Pro and Noto Serif SC fonts optimized for performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Preload images -->
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="Zongtongfu - RXKO_Centred.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="1 - RX-min.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="2 - RXKO-min.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="3 - KO-min.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="4 - RXKO-min.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="5 - RXKO-min.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="6 - RXKO-min.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="NZ_Keisha-Robin_Centred.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="Cape-Naturaliste.jpg">
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Invisible text to preload Chinese fonts -->
+    <div style="position: absolute; visibility: hidden; height: 0; font-family: 'Noto Serif SC', serif;">
+        中文测试加载字体琦霞乐彬常见问题周末活动张刘李王陈杨赵黄吴周徐孙马朱胡郭何罗高梁郑谢韩唐冯于董萧程沈曾彭蒋蔡余潘田董袁蒋张傅钟卢汪戴崔任陆廖姚方金邱夏谭韦贾邹石熊孟秦阎薛侯雷白龙段郝孔邵史毛常万顾赖武康贺严尹钱施牛洪龚
+    </div>
+    
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <div class="nav-links">
@@ -322,7 +324,7 @@
                         <p data-en="Please arrive by 18:30 in order to allow sufficient time for seating and greeting." data-zh="请在下午6:30前到达，以便有足够的时间就座和问候。">Please arrive by 18:30 in order to allow sufficient time for seating and greeting.</p>
                     </div>
                     <div class="faq-item">
-                        <h3 data-en="How should we get around Singapore?" data-zh="有停车位吗？">Is there parking available?</h3>
+                        <h3 data-en="Is there parking available?" data-zh="有停车位吗？">Is there parking available?</h3>
                         <p data-en="Valet parking is available at the restaurant. Street parking is also available in the surrounding area." data-zh="餐厅提供代客泊车服务。周围地区也有街边停车位。">Valet parking is available at the restaurant. Street parking is also available in the surrounding area.</p>
                     </div>
                     <div class="faq-item">

@@ -8,7 +8,8 @@ const PHOTO_URLS = [
     '5 - RXKO-min.jpg',
     '6 - RXKO-min.jpg',
     'NZ_Keisha-Robin_Centred.jpg',
-    'Cape-Naturaliste.jpg'
+    'Cape-Naturaliste.jpg',
+    'Zongtongfu - RXKO_Centred.jpg'
 ];
 
 // Install event - cache photos immediately

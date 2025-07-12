@@ -1,8 +1,8 @@
-// AGGRESSIVE PHOTO PRELOADING - Start immediately when script loads
+// Optimized photo preloading
 (function() {
     'use strict';
     
-    // Photo URLs to preload
+    // Photo URLs to preload (only gallery images)
     const photoUrls = [
         '1 - RX-min.jpg',
         '2 - RXKO-min.jpg', 
@@ -12,128 +12,43 @@
         '6 - RXKO-min.jpg'
     ];
     
-    // Cache for loaded images
-    const imageCache = new Map();
-    
-    // Mobile memory persistence test - force images to stay in memory
-    function createPersistentImageCache() {
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            // Create hidden persistent container
-            const persistentContainer = document.createElement('div');
-            persistentContainer.id = 'persistent-image-cache';
-            persistentContainer.style.cssText = `
-                position: fixed;
-                top: -9999px;
-                left: -9999px;
-                width: 1px;
-                height: 1px;
-                opacity: 0;
-                pointer-events: none;
-                z-index: -9999;
-                overflow: hidden;
-            `;
-            
-            // Create persistent hidden images
-            photoUrls.forEach((url, index) => {
-                const hiddenImg = document.createElement('img');
-                hiddenImg.src = url;
-                hiddenImg.style.cssText = `
-                    width: 1px;
-                    height: 1px;
-                    position: absolute;
-                    opacity: 0;
-                    pointer-events: none;
-                `;
-                hiddenImg.loading = 'eager';
-                hiddenImg.fetchPriority = 'high';
-                hiddenImg.setAttribute('aria-hidden', 'true');
-                hiddenImg.alt = '';
-                
-                persistentContainer.appendChild(hiddenImg);
-            });
-            
-            // Add to body immediately
-            document.body.appendChild(persistentContainer);
-        }
-    }
-    
-    // Preload images immediately 
-    function preloadImages() {
+    // Simple preload for gallery images
+    function preloadGalleryImages() {
         photoUrls.forEach((url, index) => {
             const img = new Image();
-            
-            // Set fetchpriority for first 3 images
-            if (index < 3) {
-                img.fetchPriority = 'high';
-            }
-            
-            img.onload = () => {
-                imageCache.set(url, img);
-            };
-            
-            img.onerror = () => {
-                console.warn(`Failed to preload: ${url}`);
-            };
-            
-            // Start loading immediately
+            if (index < 3) img.fetchPriority = 'high';
             img.src = url;
         });
     }
     
-    // Initialize both strategies
-    createPersistentImageCache();
-    preloadImages();
-    
-    // Make cache available globally
-    window.photoCache = imageCache;
+    // Initialize preloading
+    preloadGalleryImages();
 })();
 
 // Prevent transition flash on page load by adding preload class
 // This class is removed after the page loads to enable smooth transitions
 document.body.classList.add('preload');
 
-// Enhanced image loading for IMG elements - simplified like bottom image
-function forceImageLoading() {
+// Enhanced image loading for gallery
+function enhanceGalleryImages() {
     const galleryImages = document.querySelectorAll('.gallery-photo');
     
     galleryImages.forEach((img) => {
-        // Mobile-specific memory persistence
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            // Force immediate display and prevent unloading
-            img.style.opacity = '1';
-            img.style.visibility = 'visible';
-            img.loading = 'eager';
-            img.decoding = 'sync';
-            
-            // Force GPU layer to prevent mobile unloading
-            img.style.transform = 'translateZ(0)';
-            img.style.willChange = 'auto';
-            img.style.backfaceVisibility = 'hidden';
-        } else {
-            // Desktop - simple loading
-            img.style.opacity = '1';
-            img.style.visibility = 'visible';
-        }
+        img.style.opacity = '1';
+        img.style.visibility = 'visible';
         
         const handleLoad = () => {
             img.style.opacity = '1';
             img.style.visibility = 'visible';
-            
-            // Additional mobile persistence after load
-            if (window.matchMedia('(max-width: 768px)').matches) {
-                img.style.transform = 'translateZ(0)';
-            }
         };
         
         const handleError = () => {
             console.warn(`Failed to load image: ${img.src}`);
         };
         
-        // Add event listeners
         img.addEventListener('load', handleLoad, { once: true, passive: true });
         img.addEventListener('error', handleError, { once: true, passive: true });
         
-        // For already loaded images
         if (img.complete && img.naturalHeight !== 0) {
             handleLoad();
         }
@@ -142,7 +57,7 @@ function forceImageLoading() {
 
 // Start loading images when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    forceImageLoading();
+    enhanceGalleryImages();
 });
 
 // Register service worker for aggressive photo caching
@@ -162,9 +77,9 @@ if ('serviceWorker' in navigator) {
 window.addEventListener('load', () => {
     document.body.classList.remove('preload');
     
-    // Force another check for images after full page load
+    // Ensure gallery images are properly loaded
     setTimeout(() => {
-        forceImageLoading();
+        enhanceGalleryImages();
     }, 100);
 });
 
