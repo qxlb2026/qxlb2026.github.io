@@ -889,12 +889,21 @@ p {
     
     /* Hide photos section on mobile */
     .photos-section {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     /* Update alternating colors for mobile since photos section is hidden */
     .things-section {
         background: #fefefe;
+    }
+    
+    .faq-section {
+        background: #f9f7f5;
     }
 
     /* Navigation mobile layout */
@@ -1034,7 +1043,6 @@ p {
         order: -1;
     }
     
-    .photos-section,
     .things-section,
     .location-section,
     .faq-section,
