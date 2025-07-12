@@ -406,7 +406,7 @@ p {
         background-position: center center;
     }
     
-    .travel-section,
+    .photos-section,
     .things-section,
     .location-section,
     .faq-section,
@@ -658,14 +658,14 @@ p {
 }
 
 /* Photo Gallery Section */
-.travel-section {
+.photos-section {
     padding: 120px 0;
     background: #fff;
     position: relative;
 }
 
 /* STABLE FLEXBOX VERSION - Preserves original design without CSS Grid issues */
-.travel-section:has(.simple-photo-container) {
+.photos-section:has(.simple-photo-container) {
     padding: 120px 0;
     background: #fff;
     display: flex;
@@ -701,7 +701,7 @@ p {
 }
 
 @media (max-width: 768px) {
-    .travel-section:has(.simple-photo-container) {
+    .photos-section:has(.simple-photo-container) {
         padding: 80px 0;
     }
     
@@ -1023,7 +1023,7 @@ p {
         order: -1;
     }
     
-    .travel-section,
+    .photos-section,
     .things-section,
     .location-section,
     .faq-section,
@@ -1045,7 +1045,7 @@ p {
 /* Ensure all main sections have stable positioning */
 .schedule-section,
 .location-section,
-.travel-section,
+.photos-section,
 .things-section,
 .faq-section {
     transform: none !important;
