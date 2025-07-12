@@ -886,6 +886,16 @@ p {
         height: 60vh;
         min-height: 400px;
     }
+    
+    /* Hide photos section on mobile */
+    .photos-section {
+        display: none;
+    }
+    
+    /* Update alternating colors for mobile since photos section is hidden */
+    .things-section {
+        background: #fefefe;
+    }
 
     /* Navigation mobile layout */
     .nav-content {
