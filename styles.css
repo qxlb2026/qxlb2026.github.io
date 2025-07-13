@@ -338,10 +338,10 @@ p {
 .hero-section {
     height: 100vh;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: center;
     text-align: center;
-    padding: 200px 0 40px;
+    padding: 40px 0 120px;
     background-image: url('Zongtongfu - RXKO_Centred.jpg');
     background-size: cover;
     background-position: center;
@@ -365,7 +365,10 @@ p {
     font-size: clamp(3rem, 8vw, 8rem);
     font-weight: 500;
     color: #f8f6f3;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 
+                 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 4px 8px rgba(0, 0, 0, 0.2), 
+                 0 8px 16px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -379,7 +382,10 @@ p {
     font-family: 'Crimson Pro', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     color: #f8f6f3;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 
+                 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 4px 8px rgba(0, 0, 0, 0.2), 
+                 0 8px 16px rgba(0, 0, 0, 0.1);
     margin-bottom: 32px;
     line-height: 1.5;
     font-weight: 400;
@@ -394,7 +400,10 @@ p {
     font-family: 'Crimson Pro', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
     font-size: clamp(1.25rem, 2.5vw, 2rem);
     color: #f8f6f3;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 
+                 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 4px 8px rgba(0, 0, 0, 0.2), 
+                 0 8px 16px rgba(0, 0, 0, 0.1);
     margin-bottom: 60px;
     line-height: 2;
     font-weight: 300;
@@ -410,14 +419,17 @@ p {
     font-weight: 500;
     letter-spacing: 2px;
     color: #f8f6f3;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 
+                 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 4px 8px rgba(0, 0, 0, 0.2), 
+                 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Additional mobile optimizations for hero section */
 @media (max-width: 480px) {
     .hero-section {
         height: 100vh;
-        padding: 120px 0 20px;
+        padding: 20px 0 100px;
         background-size: cover;
         background-position: center center;
     }
@@ -454,8 +466,8 @@ p {
         background-position: center center;
         background-repeat: no-repeat;
         overflow: hidden;
-        padding: 140px 0 40px;
-        align-items: flex-start;
+        padding: 40px 0 120px;
+        align-items: flex-end;
         position: relative;
         flex-shrink: 0;
     }
@@ -1007,9 +1019,9 @@ p {
     }
     
     .hero-section {
-        padding: 140px 0 40px;
+        padding: 40px 0 120px;
         height: 100vh;
-        align-items: flex-start;
+        align-items: flex-end;
     }
     
     .hero-title {
