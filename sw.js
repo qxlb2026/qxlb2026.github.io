@@ -1,5 +1,5 @@
 // Service Worker for aggressive photo caching
-const CACHE_NAME = 'wedding-photos-v1';
+const CACHE_NAME = 'wedding-photos-v2';
 const PHOTO_URLS = [
     '1 - RX-min.jpg',
     '2 - RXKO-min.jpg',
@@ -7,7 +7,6 @@ const PHOTO_URLS = [
     '4 - RXKO-min.jpg',
     '5 - RXKO-min.jpg',
     '6 - RXKO-min.jpg',
-    'NZ_Keisha-Robin_Centred.jpg',
     'Cape-Naturaliste.jpg',
     'Zongtongfu - RXKO_Centred.jpg'
 ];
